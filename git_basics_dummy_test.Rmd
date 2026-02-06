@@ -1,6 +1,6 @@
 ---
 title: "test assignment"
-author: "Jane Doe (11111111)" #insert authors including first and last name, and UM student number please
+author: "Yuan Lin" #insert authors including first and last name, and UM student number please
 output: html_document
 ---
 
