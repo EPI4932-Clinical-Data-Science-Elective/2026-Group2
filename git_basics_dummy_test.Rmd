@@ -1,6 +1,6 @@
 ---
 title: "test assignment"
-author: "Jane Doe (11111111)" #insert authors including first and last name, and UM student number please
+author: "Shiqiu Meng 20260206" #insert authors including first and last name, and UM student number please
 output: html_document
 ---
 
@@ -16,7 +16,10 @@ Date: `r Sys.Date()`
 
 ```{r dataset, include = FALSE}
 smaller <- diamonds %>% 
-  filter(carat <= 2.5)
+  filter(carat <= 6.6)
+
+
+        
 ```
 
 We have  data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than
@@ -32,6 +35,6 @@ smaller %>%
   geom_freqpoly(binwidth = 0.04)
 ```
 
-
+du dududu dududu duu duud uu uuu
 
 
