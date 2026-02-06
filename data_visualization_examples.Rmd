@@ -44,6 +44,18 @@ print(pears)
 
 installRequiredPackages("ggpubr")
 
+R version 4.5.2 (2025-10-31 ucrt) -- "[Not] Part in a Rumble"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R是自由软件，不附带任何担保。
+在某些条件下你可以将其自由分发。
+用'license()'或'licence()'来看分发的详细条件。
+
+R是个合作计划，有许多人为之做出了贡献.
+用'contributors()'来看合著者的详细情况
+用'citation()'会告诉你如何在出版物中正确地引用R或R程序包。
+
 ggscatter(data_viz_1, x = "x", y = "y", 
           add = "reg.line", conf.int = TRUE, 
           cor.coef = TRUE, cor.method = "pearson",
