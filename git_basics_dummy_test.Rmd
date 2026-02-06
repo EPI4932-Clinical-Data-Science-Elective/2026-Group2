@@ -1,6 +1,6 @@
 ---
 title: "test assignment"
-author: "Yuan Lin 20260206 New Update 12:35" #insert authors including first and last name, and UM student number please
+author: "Yuan Lin 20260206 New Update 12:35 More Updates" #insert authors including first and last name, and UM student number please
 output: html_document
 ---
 
