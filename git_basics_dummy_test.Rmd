@@ -40,7 +40,8 @@ You can also embed plots, for example:
 ```{r, echo = FALSE}
 smaller %>% 
   ggplot(aes(carat)) + 
-  geom_freqpoly(binwidth = 0.04)
+  geom_freqpoly(binwidth = 0.50)
+
 ```
 
 du dududu dududu duu duud uu uuu
