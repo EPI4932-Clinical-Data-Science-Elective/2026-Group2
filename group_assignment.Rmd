@@ -29,7 +29,7 @@ You can also embed plots, for example:
 ```{r, echo = FALSE}
 smaller %>% 
   ggplot(aes(carat)) + 
-  geom_freqpoly(binwidth = 0.03)
+  geom_freqpoly(binwidth = 0.13)
 ```
 
 
