@@ -16,7 +16,7 @@ Date: `r Sys.Date()`
 
 ```{r dataset, include = FALSE}
 smaller <- diamonds %>% 
-  filter(carat <= 2.5)
+  filter(carat <= 3.0)
 ```
 
 We have  data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(smaller)` are larger than
