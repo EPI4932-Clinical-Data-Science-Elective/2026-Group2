@@ -1,0 +1,143 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\documentclass[
+]{article}
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{amsmath,amssymb}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{graphicx}
+\makeatletter
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
+% Set default figure placement to htbp
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Association of socio-demographic factors and pain presentation in a cohort of chronic pain patients},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Association of socio-demographic factors and pain presentation in
+a cohort of chronic pain patients}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Date:
+
+\subsubsection{Introduction}\label{introduction}
+
+Chronic pain is a complex and multifaceted condition that manifests in
+highly heterogeneous ways across individuals. Much variability is
+observed in the intensity of pain, the response to conservative
+treatment, and scores on other related patient-reported outcome measures
+(PROMs) such as anxiety and depression. The aim of this study was to
+estimate associations between socio-demographic characteristics and pain
+intensity in patients with chronic pain at the intake in a specialized
+pain clinic. The secondary aim was to estimate correlations between
+PROMs in patients with chronic pain.
+
+\subsubsection{Methods}\label{methods}
+
+For this study, we used a subset of patients from the chronic pain
+registry of the Maastricht University Medical Centre department of pain
+management who had been recruited between January 2022 and December
+2024. This registry has been described in great detail elsewhere.
+Patients were considered eligible if they had pain for at least 3 months
+and conservative treatment (e.g.~physical therapy) failed. Patients
+received questionnaires at enrollment, consisting of several PROMs, such
+as the RAND-36 questionnaire and the hospital anxiety and depression
+scale (HADS). Baseline data were summarized as mean and standard
+deviation (SD) or as count and percentage. Multivariable linear
+regression analysis was used to estimate associations between
+socio-demographic factors and pain intensity. Pearson's correlation
+coefficient was computed to estimate the correlation between pain
+intensity, depressive complaints, and anxiety.
+
+\subsubsection{Results}\label{results}
+
+\paragraph{Baseline characteristics}\label{baseline-characteristics}
+
+Between January 2022 and December 2024, we included chronic pain
+patients, of whom (\%) were female, with a mean age (SD) of (). Table 1
+shows baseline characteristics of the cohort of chronic pain patients. `
+
+\paragraph{Associations between socia-demographic factors and pain
+intensity}\label{associations-between-socia-demographic-factors-and-pain-intensity}
+
+The mean (SD) pain intensity measured using the RAND questionnaire pain
+domain was (). Linear regression analysis did not reveal any
+statistically significant associations between socio-demographic factors
+and pain intensity (table 2). However, both female sex (regression
+coefficient = ) and having a child (regression coefficient = ) were
+associated with a clinically meaningful higher mean pain intensity,
+albeit not significant.
+
+\paragraph{Correlations between outcome
+measures}\label{correlations-between-outcome-measures}
+
+Figure 1 shows the correlations between different outcome measures.
+Strong negative correlations were seen between the HADS depression and
+anxiety scales on the one hand, and the RAND questionnaire mental health
+dimension, and moderate positive correlations between the two HADS
+subscales. The RAND pain dimension was not strongly correlated to any of
+the other patient-reported outcomes.
+
+\subsubsection{Conclusion}\label{conclusion}
+
+We did not find strong significant associations between
+socio-demographic factors and pain intensity in a large cohort of
+chronic pain patients, albeit some were potentially clinically relevant.
+Pain intensity was not strongly correlated to other patient outcomes.
+
+\subsection{References}\label{references}
+
+\end{document}
