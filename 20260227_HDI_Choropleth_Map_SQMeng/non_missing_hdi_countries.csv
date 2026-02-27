@@ -1,0 +1,90 @@
+country,iso_code,hdi_2019,hdi_category
+Albania,ALB,0.795,High
+Algeria,DZA,0.748,High
+Argentina,ARG,0.845,Very high
+Australia,AUS,0.944,Very high
+Austria,AUT,0.922,Very high
+Bangladesh,BGD,0.632,Medium
+Belgium,BEL,0.931,Very high
+Benin,BEN,0.545,Low
+Bosnia and Herzegovina,BIH,0.78,High
+Brazil,BRA,0.765,High
+Bulgaria,BGR,0.816,Very high
+Burkina Faso,BFA,0.452,Low
+Canada,CAN,0.929,Very high
+Chile,CHL,0.851,Very high
+China,CHN,0.761,High
+Colombia,COL,0.767,High
+Costa Rica,CRI,0.81,Very high
+Croatia,HRV,0.851,Very high
+Denmark,DNK,0.94,Very high
+Djibouti,DJI,0.524,Low
+Dominican Republic,DOM,0.756,High
+Ecuador,ECU,0.759,High
+Egypt,EGY,0.707,High
+El Salvador,SLV,0.673,Medium
+Estonia,EST,0.892,Very high
+Ethiopia,ETH,0.485,Low
+Fiji,FJI,0.743,High
+Gambia,GMB,0.496,Low
+Georgia,GEO,0.812,Very high
+Ghana,GHA,0.611,Medium
+Greece,GRC,0.888,Very high
+Haiti,HTI,0.51,Low
+Hungary,HUN,0.854,Very high
+Iceland,ISL,0.949,Very high
+India,IND,0.645,Medium
+Indonesia,IDN,0.718,High
+Iran,IRN,0.783,High
+Ireland,IRL,0.955,Very high
+Israel,ISR,0.919,Very high
+Italy,ITA,0.892,Very high
+Kazakhstan,KAZ,0.825,Very high
+Kenya,KEN,0.601,Medium
+Kyrgyzstan,KGZ,0.697,Medium
+Laos,LAO,0.613,Medium
+Latvia,LVA,0.866,Very high
+Liberia,LBR,0.48,Low
+Lithuania,LTU,0.882,Very high
+Luxembourg,LUX,0.916,Very high
+Malawi,MWI,0.483,Low
+Malaysia,MYS,0.81,Very high
+Malta,MLT,0.895,Very high
+Mauritius,MUS,0.804,Very high
+Mexico,MEX,0.779,High
+Moldova,MDA,0.75,High
+Mongolia,MNG,0.737,High
+Morocco,MAR,0.686,Medium
+Mozambique,MOZ,0.456,Low
+Myanmar,MMR,0.583,Medium
+Nepal,NPL,0.602,Medium
+Niger,NER,0.394,Low
+Norway,NOR,0.957,Very high
+Pakistan,PAK,0.557,Medium
+Panama,PAN,0.815,Very high
+Paraguay,PRY,0.728,High
+Portugal,PRT,0.864,Very high
+Romania,ROU,0.828,Very high
+Russia,RUS,0.824,Very high
+Seychelles,SYC,0.796,High
+Slovakia,SVK,0.86,Very high
+South Africa,ZAF,0.709,High
+South Korea,KOR,0.916,Very high
+Spain,ESP,0.904,Very high
+Sri Lanka,LKA,0.782,High
+Sweden,SWE,0.945,Very high
+Tanzania,TZA,0.529,Low
+Thailand,THA,0.777,High
+Timor-Leste,TLS,0.606,Medium
+Togo,TGO,0.515,Low
+Tunisia,TUN,0.74,High
+Turkey,TUR,0.82,Very high
+Uganda,UGA,0.544,Low
+Ukraine,UKR,0.779,High
+United Kingdom,GBR,0.932,Very high
+United States,USA,0.926,Very high
+Uruguay,URY,0.817,Very high
+Vietnam,VNM,0.704,High
+Yemen,YEM,0.47,Low
+Zambia,ZMB,0.584,Medium
+Zimbabwe,ZWE,0.571,Medium
