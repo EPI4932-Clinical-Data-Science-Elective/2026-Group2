@@ -1,11 +1,23 @@
 ---
 title: "test assignment"
-author: "Leonard Wee (11111111) and Sander van Kuijk (22222222)" #insert authors including first and last name, and UM student number please
+author: Paulina STapor (i6325887)
 output: html_document
 ---
 
+```{r}
+
+library(readr)
+Covid_cleaned <- read_csv("open_covid_data/Covid_cleaned.csv")
+View(Covid_cleaned)
+```
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+
+library(dplyr)
+library(ggplot2)
+library(slider)
+library(scales)
 
 library(ggplot2)
 library(dplyr)
@@ -42,7 +54,7 @@ continent_daily <- covid %>%
      )
 continent_daily <- continent_daily %>%
     group_by(continent) %>%
-     arrange(date) %>%
+     arrange(continent, date) %>%
      mutate(
          new_cases_pm_7dma = slider::slide_dbl(
              new_cases_per_million_cont,
@@ -51,12 +63,16 @@ continent_daily <- continent_daily %>%
          )
      ) %>%
      ungroup()
-continent_daily %>%
-     filter(!is.na(new_cases_pm_7dma)) %>%
-     ggplot(aes(x = date, y = new_cases_pm_7dma, color = continent)) +
+
+```
+
+```{r}
+library(readr)
+Covid_cleaned <- read_csv("open_covid_data/Covid_cleaned.csv")
+ggplot(continent_daily, aes(x = date, y = new_cases_pm_7dma, color = continent)) +
      geom_line(linewidth = 1.1, alpha = 0.95) +
      scale_x_date(date_breaks = "6 months", date_labels = "%b\n%Y") +
-     scale_y_continuous(labels = label_number(accuracy = 1)) +
+     scale_y_continuous(labels = scales::label_number(accuracy = 1)) +
      labs(
          title = "COVID-19 New Cases per Million (7-day moving average)",
          subtitle = "Countries pooled to continent level (population-weighted)",
