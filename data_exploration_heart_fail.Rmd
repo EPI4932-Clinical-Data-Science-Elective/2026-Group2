@@ -1,6 +1,6 @@
 ---
 title: 'Data Exploration 1 : Heart Failure Example'
-author: "Leonard Wee"
+author: "Leonard Wee" 
 date: "24-1-2022"
 output:
   html_document: default
@@ -204,7 +204,7 @@ Next we want to go through and see how we handle **specific recoding of data typ
 Note the use here of two useful **dplyr** functions, **mutate** which directly manipulates data frames and **recode_factor** which allows you to write and show your operation in a clearly understandable way.
 
 ```{r recode-sex-binary-factor}
-recodedHeartFailure %<>% dplyr::mutate(bin_sex_is_male=dplyr::recode_factor(bin_sex_is_male, 
+"recodedHeartFailure %<>% dplyr::mutate(bin_sex_is_male=dplyr::recode_factor(bin_sex_is_male, 
                          'M' = '1',
                          'F' = '0'))
 ```
@@ -212,7 +212,7 @@ recodedHeartFailure %<>% dplyr::mutate(bin_sex_is_male=dplyr::recode_factor(bin_
 In this code fragment we also meet the command "%<>%", which simply means perform the commands on the right hand side and feed the output back into the object on the left hand side. Watch how this simple trick makes your code a bit shorter to write and change (if needed), by reducing duplicate text.
 
 ```{r recode-sex-without-pipes}
-recodedHeartFailure <- dplyr::mutate(recodedHeartFailure,
+recodeHeartFailure <- dplyr::mutate(recodeHeartFailure,
                                      bin_sex_is_male=dplyr::recode_factor(bin_sex_is_male, 
                          'M' = '1',
                          'F' = '0'))
