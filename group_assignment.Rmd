@@ -27,9 +27,51 @@ We have  data about `r nrow(diamonds)` diamonds. Only `r nrow(diamonds) - nrow(s
 You can also embed plots, for example:
 
 ```{r, echo = FALSE}
-smaller %>% 
-  ggplot(aes(carat)) + 
-  geom_freqpoly(binwidth = 0.13)
+continent_daily <- covid %>%
++     mutate(
++         est_new_cases = (new_cases_per_million / 1e6) * population
++     ) %>%
++     group_by(continent, date) %>%
++     summarise(
++         new_cases = sum(est_new_cases, na.rm = TRUE),
++         pop = sum(population, na.rm = TRUE),
++         .groups = "drop"
++     ) %>%
++     mutate(
++         new_cases_per_million_cont = (new_cases / pop) * 1e6
++     )
+continent_daily <- continent_daily %>%
++     group_by(continent) %>%
++     arrange(date) %>%
++     mutate(
++         new_cases_pm_7dma = slider::slide_dbl(
++             new_cases_per_million_cont,
++             mean,
++             .before = 6, .complete = TRUE, na.rm = TRUE
++         )
++     ) %>%
++     ungroup()
+continent_daily %>%
++     filter(!is.na(new_cases_pm_7dma)) %>%
++     ggplot(aes(x = date, y = new_cases_pm_7dma, color = continent)) +
++     geom_line(linewidth = 1.1, alpha = 0.95) +
++     scale_x_date(date_breaks = "6 months", date_labels = "%b\n%Y") +
++     scale_y_continuous(labels = label_number(accuracy = 1)) +
++     labs(
++         title = "COVID-19 New Cases per Million (7-day moving average)",
++         subtitle = "Countries pooled to continent level (population-weighted)",
++         x = "Date",
++         y = "New cases per million (7DMA)",
++         color = "Continent"
++     ) +
++     theme_minimal(base_size = 14) +
++     theme(
++         plot.title = element_text(face = "bold", size = 20),
++         plot.subtitle = element_text(size = 13),
++         legend.position = "bottom",
++         panel.grid.minor = element_blank()
++     )
+
 ```
 
 
