@@ -1,0 +1,136 @@
+---
+title: "COVID time series by HDI(Europe)"
+author: "Lin"
+date: "2026-02-26"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+## This analysis uses COVID data from European nations.
+## Countries are classified into three approximately tertile-based HDI groups(Low, Mid, and High HDI) using country-level Human Development Index (HDI) values,while keeping identical HDI values in the same group.
+## For each country, the analysis uses total_cases_per_million at the end of each month, and then calculates monthly group means and plots a time-series figure with 95% CI.
+
+```{r setup echo = FALSE, message = FALSE, warning = FALSE}
+library(readr)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+
+## Read the cleaned COVID dataset
+PATH_COVID <- file.path("open_covid_data", "Covid_cleaned.csv")
+covid_raw <- readr::read_csv(PATH_COVID, show_col_types = FALSE)
+```
+
+```{r rename-mutate echo = FALSE, message = FALSE, warning = FALSE}
+## Rename variables and standardise data types
+
+recodedCovid <- covid_raw %>%
+  dplyr::rename(country = location, num_total_cases_per_million = total_cases_per_million, num_hdi = human_development_index
+                ) %>%
+dplyr::mutate(date = as.Date(date), continent = as.character(continent), country = as.character(country), num_total_cases_per_million = as.numeric(num_total_cases_per_million), num_hdi = as.numeric(num_hdi))
+```
+
+```{r filter-Europe echo = FALSE, message = FALSE, warning = FALSE}
+## keep European countries only and remove missing value
+
+recodedCovid <- recodedCovid %>%
+  dplyr::filter(continent == "Europe", !is.na(date), !is.na(country), !is.na(num_total_cases_per_million), !is.na(num_hdi))
+```
+
+```{r make-month echo = FALSE, message = FALSE, warning = FALSE}
+## create a monthly time variable 
+
+recodedCovid <- recodedCovid %>%
+  dplyr::mutate(month = lubridate::floor_date(date,"month"))
+```
+
+```{r create-hdi-groups echo = FALSE, message = FALSE, warning = FALSE}
+## Compute country-level mean HDI
+hdiCountry <- recodedCovid %>%
+  dplyr::group_by(country) %>%
+  dplyr::summarise(num_hdi_country = mean(num_hdi, na.rm = TRUE),.groups = "drop")
+
+## Build a frequency table of unique HDI values so tied values stay together 
+hdi_freq <- hdiCountry %>%
+  dplyr::count(num_hdi_country, name = "freq") %>%
+  dplyr::arrange(num_hdi_country) %>%
+  dplyr::mutate(cum_n = cumsum(freq))
+
+## Total number of countries and target tertile positions
+N <- sum(hdi_freq$freq)
+target1 <- N / 3 
+target2 <- 2 * N / 3
+
+## Pick the first cut at the boundary closest to the 1/3 position
+i1 <- which.min(abs(hdi_freq$cum_n - target1))
+
+## Pick the second cut at the boundary closest to the 2/3 position
+candidate_i2 <- seq(i1 + 1, nrow(hdi_freq) - 1)
+i2 <- candidate_i2 [which.min(abs(hdi_freq$cum_n[candidate_i2] - target2))]
+
+## Extract cut values (upper boundary for Low and Mid groups)
+cut1 <- hdi_freq$num_hdi_country[i1]
+cut2 <- hdi_freq$num_hdi_country[i2]
+
+## Assign groups without splitting identical HDI values
+hdiCountry <- hdiCountry %>%
+  dplyr::mutate(hdi_group = dplyr::case_when(
+    num_hdi_country <= cut1 ~ "Low HDI",
+    num_hdi_country <= cut2 ~ "Mid HDI", TRUE ~ "High HDI"), hdi_group = factor(hdi_group, levels = c("Low HDI", "Mid HDI", "High HDI")))
+
+## join country-level HDI group lables back to daily data
+recodedCovid <- recodedCovid %>%
+  dplyr::left_join ( hdiCountry %>%
+  dplyr::select(country,hdi_group), by = "country")
+```
+
+
+```{r month-end-country echo=FALSE, message=FALSE, warning=FALSE}
+## For each country and month, keep the last available total_cases_per_million value
+countryMonth <- recodedCovid %>%
+  dplyr::group_by(country, hdi_group, month) %>%
+  dplyr::arrange(date, .by_group = TRUE) %>%
+  dplyr::summarise(
+    month_end_cases_pm = dplyr::last(num_total_cases_per_million), 
+.groups = "drop")
+```
+
+
+```{r group-month-summary echo=FALSE, message=FALSE, warning=FALSE}
+## Summarise month-end values by HDI group and month:mean, standard deviation, standard error, and 95% confidence interval
+
+groupMonth <- countryMonth %>%
+  dplyr::group_by(hdi_group, month) %>%
+  dplyr::summarise(
+    mean_value = mean(month_end_cases_pm, na.rm = TRUE),
+    sd_value   = sd(month_end_cases_pm, na.rm = TRUE),
+    n_countries = dplyr::n(),
+    se = sd_value / sqrt(n_countries), 
+    lower_95 = mean_value - 1.96 * se, 
+    upper_95 = mean_value + 1.96 * se, 
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(hdi_group, month)
+```
+
+
+```{r final-plot echo=FALSE, message=FALSE, warning=FALSE}
+## Plot monthly mean total_cases_per_million by HDI group, using ggplot2, with lines for means and shaded for 95% CI
+
+p_final <- ggplot(
+  groupMonth, 
+  aes(x = month, y = mean_value, colour = hdi_group, fill = hdi_group)) + 
+  geom_ribbon(aes(ymin = lower_95, ymax = upper_95), 
+              alpha = 0.18, colour = NA, na.rm = TRUE) +
+  geom_line(linewidth = 1.1, na.rm = TRUE) +
+  scale_x_date(date_labels = "%b %Y", date_breaks = "1 month") +
+  labs(x = "Month", y = "Mean total_cases_per_million (month-end, by country)", title = "Europe: total_cases_per_million by HDI group", colour = "HDI group", fill = "HDI group") +
+  theme_bw() + 
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+dir.create(file.path("outputs","figures"), recursive = TRUE, showWarnings = FALSE)
+ggsave(file.path("outputs","figures","hdi_timeseries.png"), p_final, width = 9, height = 5, dpi = 300)
+
+p_final
+```
