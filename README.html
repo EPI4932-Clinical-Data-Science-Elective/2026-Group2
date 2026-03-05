@@ -354,31 +354,77 @@ display: none;
 
 <div id="covid-19-global-trends-analysis" class="section level1">
 <h1>COVID-19 Global Trends Analysis</h1>
-<div id="group-assignment" class="section level3">
-<h3>2026 Group Assignment</h3>
-<p>This repository contains the code, data, and outputs for the
-<strong>2026 Group Assignment</strong> analysing global COVID-19 trends.
-The project produces time-series analyses and global visualisations of
-COVID-19 cases and deaths.</p>
-<hr />
-</div>
-</div>
-<div id="table-of-contents" class="section level1">
-<h1>Table of Contents</h1>
+<p><img role="img" aria-label="Language" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI3OCIgaGVpZ2h0PSIyMCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsPSJsYW5ndWFnZTogUiI+PHRpdGxlPmxhbmd1YWdlOiBSPC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSI3OCIgaGVpZ2h0PSIyMCIgcng9IjMiIGZpbGw9IiNmZmYiLz48L2NsaXBQYXRoPjxnIGNsaXAtcGF0aD0idXJsKCNyKSI+PHJlY3Qgd2lkdGg9IjYxIiBoZWlnaHQ9IjIwIiBmaWxsPSIjNTU1Ii8+PHJlY3QgeD0iNjEiIHdpZHRoPSIxNyIgaGVpZ2h0PSIyMCIgZmlsbD0iIzAwN2VjNiIvPjxyZWN0IHdpZHRoPSI3OCIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIzMTUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjUxMCI+bGFuZ3VhZ2U8L3RleHQ+PHRleHQgeD0iMzE1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSI1MTAiPmxhbmd1YWdlPC90ZXh0Pjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSI2ODUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjcwIj5SPC90ZXh0Pjx0ZXh0IHg9IjY4NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iNzAiPlI8L3RleHQ+PC9nPjwvc3ZnPg==" alt="Language" /> <img role="img" aria-label="Reproducible" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTQiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0icmVwcm9kdWNpYmxlOiByZW52Ij48dGl0bGU+cmVwcm9kdWNpYmxlOiByZW52PC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIxMTQiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI3OSIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9Ijc5IiB3aWR0aD0iMzUiIGhlaWdodD0iMjAiIGZpbGw9IiM5N2NhMDAiLz48cmVjdCB3aWR0aD0iMTE0IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjQwNSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iNjkwIj5yZXByb2R1Y2libGU8L3RleHQ+PHRleHQgeD0iNDA1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSI2OTAiPnJlcHJvZHVjaWJsZTwvdGV4dD48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iOTU1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSIyNTAiPnJlbnY8L3RleHQ+PHRleHQgeD0iOTU1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIyNTAiPnJlbnY8L3RleHQ+PC9nPjwvc3ZnPg==" alt="Reproducible" /> <img role="img" aria-label="Report" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTgiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0icmVwb3J0OiBSTWFya2Rvd24iPjx0aXRsZT5yZXBvcnQ6IFJNYXJrZG93bjwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PGNsaXBQYXRoIGlkPSJyIj48cmVjdCB3aWR0aD0iMTE4IiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj48cmVjdCB3aWR0aD0iNDMiIGhlaWdodD0iMjAiIGZpbGw9IiM1NTUiLz48cmVjdCB4PSI0MyIgd2lkdGg9Ijc1IiBoZWlnaHQ9IjIwIiBmaWxsPSJwdXJwbGUiLz48cmVjdCB3aWR0aD0iMTE4IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjIyNSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzMwIj5yZXBvcnQ8L3RleHQ+PHRleHQgeD0iMjI1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIzMzAiPnJlcG9ydDwvdGV4dD48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iNzk1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI2NTAiPlJNYXJrZG93bjwvdGV4dD48dGV4dCB4PSI3OTUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjY1MCI+Uk1hcmtkb3duPC90ZXh0PjwvZz48L3N2Zz4=" alt="Report" /> <img role="img" aria-label="Course" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDQiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0iY291cnNlOiBFUEk0OTMyIj48dGl0bGU+Y291cnNlOiBFUEk0OTMyPC90aXRsZT48bGluZWFyR3JhZGllbnQgaWQ9InMiIHgyPSIwIiB5Mj0iMTAwJSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjYmJiIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLW9wYWNpdHk9Ii4xIi8+PC9saW5lYXJHcmFkaWVudD48Y2xpcFBhdGggaWQ9InIiPjxyZWN0IHdpZHRoPSIxMDQiIGhlaWdodD0iMjAiIHJ4PSIzIiBmaWxsPSIjZmZmIi8+PC9jbGlwUGF0aD48ZyBjbGlwLXBhdGg9InVybCgjcikiPjxyZWN0IHdpZHRoPSI0NyIgaGVpZ2h0PSIyMCIgZmlsbD0iIzU1NSIvPjxyZWN0IHg9IjQ3IiB3aWR0aD0iNTciIGhlaWdodD0iMjAiIGZpbGw9IiNmZTdkMzciLz48cmVjdCB3aWR0aD0iMTA0IiBoZWlnaHQ9IjIwIiBmaWxsPSJ1cmwoI3MpIi8+PC9nPjxnIGZpbGw9IiNmZmYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJWZXJkYW5hLEdlbmV2YSxEZWphVnUgU2FucyxzYW5zLXNlcmlmIiB0ZXh0LXJlbmRlcmluZz0iZ2VvbWV0cmljUHJlY2lzaW9uIiBmb250LXNpemU9IjExMCI+PHRleHQgYXJpYS1oaWRkZW49InRydWUiIHg9IjI0NSIgeT0iMTUwIiBmaWxsPSIjMDEwMTAxIiBmaWxsLW9wYWNpdHk9Ii4zIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgdGV4dExlbmd0aD0iMzcwIj5jb3Vyc2U8L3RleHQ+PHRleHQgeD0iMjQ1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSIzNzAiPmNvdXJzZTwvdGV4dD48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iNzQ1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI0NzAiPkVQSTQ5MzI8L3RleHQ+PHRleHQgeD0iNzQ1IiB5PSIxNDAiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiBmaWxsPSIjZmZmIiB0ZXh0TGVuZ3RoPSI0NzAiPkVQSTQ5MzI8L3RleHQ+PC9nPjwvc3ZnPg==" alt="Course" />
+<img role="img" aria-label="License" src="data:image/svg+xml;charset=utf-8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMTAiIGhlaWdodD0iMjAiIHJvbGU9ImltZyIgYXJpYS1sYWJlbD0ibGljZW5zZTogQWNhZGVtaWMiPjx0aXRsZT5saWNlbnNlOiBBY2FkZW1pYzwvdGl0bGU+PGxpbmVhckdyYWRpZW50IGlkPSJzIiB4Mj0iMCIgeTI9IjEwMCUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JiYiIgc3RvcC1vcGFjaXR5PSIuMSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1vcGFjaXR5PSIuMSIvPjwvbGluZWFyR3JhZGllbnQ+PGNsaXBQYXRoIGlkPSJyIj48cmVjdCB3aWR0aD0iMTEwIiBoZWlnaHQ9IjIwIiByeD0iMyIgZmlsbD0iI2ZmZiIvPjwvY2xpcFBhdGg+PGcgY2xpcC1wYXRoPSJ1cmwoI3IpIj48cmVjdCB3aWR0aD0iNDciIGhlaWdodD0iMjAiIGZpbGw9IiM1NTUiLz48cmVjdCB4PSI0NyIgd2lkdGg9IjYzIiBoZWlnaHQ9IjIwIiBmaWxsPSIjOWY5ZjlmIi8+PHJlY3Qgd2lkdGg9IjExMCIgaGVpZ2h0PSIyMCIgZmlsbD0idXJsKCNzKSIvPjwvZz48ZyBmaWxsPSIjZmZmIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iVmVyZGFuYSxHZW5ldmEsRGVqYVZ1IFNhbnMsc2Fucy1zZXJpZiIgdGV4dC1yZW5kZXJpbmc9Imdlb21ldHJpY1ByZWNpc2lvbiIgZm9udC1zaXplPSIxMTAiPjx0ZXh0IGFyaWEtaGlkZGVuPSJ0cnVlIiB4PSIyNDUiIHk9IjE1MCIgZmlsbD0iIzAxMDEwMSIgZmlsbC1vcGFjaXR5PSIuMyIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIHRleHRMZW5ndGg9IjM3MCI+bGljZW5zZTwvdGV4dD48dGV4dCB4PSIyNDUiIHk9IjE0MCIgdHJhbnNmb3JtPSJzY2FsZSguMSkiIGZpbGw9IiNmZmYiIHRleHRMZW5ndGg9IjM3MCI+bGljZW5zZTwvdGV4dD48dGV4dCBhcmlhLWhpZGRlbj0idHJ1ZSIgeD0iNzc1IiB5PSIxNTAiIGZpbGw9IiMwMTAxMDEiIGZpbGwtb3BhY2l0eT0iLjMiIHRyYW5zZm9ybT0ic2NhbGUoLjEpIiB0ZXh0TGVuZ3RoPSI1MzAiPkFjYWRlbWljPC90ZXh0Pjx0ZXh0IHg9Ijc3NSIgeT0iMTQwIiB0cmFuc2Zvcm09InNjYWxlKC4xKSIgZmlsbD0iI2ZmZiIgdGV4dExlbmd0aD0iNTMwIj5BY2FkZW1pYzwvdGV4dD48L2c+PC9zdmc+" alt="License" /></p>
+<div id="epi4932-clinical-data-science-elective" class="section level3">
+<h3>EPI4932 – Clinical Data Science Elective</h3>
+<p><strong>2026 Group Assignment (Group 2)</strong></p>
+<p>This repository contains the <strong>code, data pipeline, and
+outputs</strong> used to analyse global COVID-19 trends. The project
+investigates <strong>temporal and spatial patterns in COVID-19 cases and
+deaths worldwide</strong> using reproducible data science workflows.</p>
+<p>The analysis produces:</p>
 <ul>
-<li><a href="#project-structure">Project Structure</a></li>
-<li><a href="#reproducibility">Reproducibility</a></li>
-<li><a href="#running-the-analysis">Running the Analysis</a></li>
-<li><a href="#software">Software</a></li>
-<li><a href="#authors">Authors</a></li>
+<li><strong>Time-series analyses by continent</strong></li>
+<li><strong>Time-series analyses stratified by Human Development Index
+(HDI)</strong></li>
+<li>Global <strong>choropleth maps</strong></li>
 </ul>
+<p>All results are generated <strong>directly from code</strong>,
+ensuring full <strong>transparency, reproducibility, and methodological
+clarity</strong>.</p>
 <hr />
 </div>
-<div id="project-structure" class="section level1">
-<h1>Project Structure</h1>
+</div>
+<div id="project-overview" class="section level1">
+<h1>Project Overview</h1>
+<p>This project demonstrates a reproducible workflow for analysing
+global epidemiological data using the R ecosystem.</p>
+<p>The analysis pipeline:</p>
+<ol style="list-style-type: decimal">
+<li>Imports global COVID-19 datasets</li>
+<li>Cleans and structures time-series data</li>
+<li>Produces visualisations of global trends</li>
+<li>Generates a reproducible analytical report using
+<strong>RMarkdown</strong></li>
+</ol>
+<p>The final report integrates all results and visualisations.</p>
+<hr />
+</div>
+<div id="key-visualisations" class="section level1">
+<h1>Key Visualisations</h1>
+<div id="covid-19-time-series-by-continent" class="section level2">
+<h2>COVID-19 Time-Series by Continent</h2>
+<p align="center">
+<img role="img" src="Outputs_Time_Series_Continent_by_Paulina/time_series_continent.png" width="75%">
+</p>
+<p>Temporal evolution of COVID-19 cases across continents.</p>
+<hr />
+</div>
+<div id="covid-19-time-series-by-human-development-index" class="section level2">
+<h2>COVID-19 Time-Series by Human Development Index</h2>
+<p align="center">
+<img role="img" src="Outputs_Time_Series_HDI_by_Lin/time_series_hdi.png" width="75%">
+</p>
+<p>Comparison of COVID-19 trajectories across countries grouped by
+development level.</p>
+<hr />
+</div>
+<div id="global-covid-19-choropleth-map" class="section level2">
+<h2>Global COVID-19 Choropleth Map</h2>
+<p align="center">
+<img role="img" src="Outputs_Choropleth_Map_by_Shiqiu/choropleth_map.png" width="75%">
+</p>
+<p>Spatial visualisation of global COVID-19 metrics using geographic
+mapping.</p>
+<hr />
+</div>
+</div>
+<div id="repository-structure" class="section level1">
+<h1>Repository Structure</h1>
 <details>
 <summary>
-Click to expand
+<strong>Click to expand repository structure</strong>
 </summary>
 <pre><code>.
 ├── Final_Group_Assignment.Rmd
@@ -405,43 +451,81 @@ Click to expand
 </div>
 <div id="reproducibility" class="section level1">
 <h1>Reproducibility</h1>
-<p>This project uses the <strong><code>renv</code> package</strong> to
-manage package dependencies and ensure that the analysis can be
-reproduced with the exact package versions used during development.</p>
-<p>The file</p>
+<p>This project uses the <strong><code>renv</code></strong> package to
+ensure reproducible dependency management.</p>
+<p>The file:</p>
 <pre><code>renv.lock</code></pre>
-<p>records all package versions used in the project.</p>
-<p>To recreate the environment on another machine:</p>
+<p>records the exact versions of all R packages used during
+development.</p>
+<p>To recreate the environment:</p>
 <pre class="r"><code>renv::restore()</code></pre>
+<p>This installs all required packages with the precise versions
+specified in the lockfile.</p>
 <hr />
 </div>
 <div id="running-the-analysis" class="section level1">
 <h1>Running the Analysis</h1>
-<p>After restoring the environment, the analysis can be reproduced by
-rendering the report:</p>
+<p>After restoring the environment, the full analysis pipeline can be
+reproduced by rendering the report:</p>
 <pre class="r"><code>rmarkdown::render(&quot;Final_Group_Assignment.Rmd&quot;)</code></pre>
-<p>This command runs the full analysis pipeline and regenerates all
-figures and outputs.</p>
+<p>This command:</p>
+<ul>
+<li>loads the dataset</li>
+<li>executes the full analysis pipeline</li>
+<li>regenerates all figures</li>
+<li>rebuilds the final HTML report</li>
+</ul>
 <hr />
 </div>
-<div id="software" class="section level1">
-<h1>Software</h1>
-<p>The analysis was conducted using:</p>
-<ul>
-<li><strong>R</strong></li>
-<li><strong>RMarkdown</strong></li>
-<li><strong>renv</strong> for environment management</li>
-<li><strong>dplyr</strong> for data manipulation</li>
-<li><strong>ggplot2</strong> and <strong>plotly</strong> for
-visualisation</li>
-<li><strong>sf</strong> and <strong>rnaturalearth</strong> for
-geographic mapping</li>
-</ul>
+<div id="software-stack" class="section level1">
+<h1>Software Stack</h1>
+<table>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>R</strong></td>
+<td>Statistical computing</td>
+</tr>
+<tr class="even">
+<td><strong>RMarkdown</strong></td>
+<td>Reproducible analytical reporting</td>
+</tr>
+<tr class="odd">
+<td><strong>renv</strong></td>
+<td>Environment and dependency management</td>
+</tr>
+<tr class="even">
+<td><strong>dplyr</strong></td>
+<td>Data manipulation</td>
+</tr>
+<tr class="odd">
+<td><strong>ggplot2</strong></td>
+<td>Data visualisation</td>
+</tr>
+<tr class="even">
+<td><strong>plotly</strong></td>
+<td>Interactive visualisation</td>
+</tr>
+<tr class="odd">
+<td><strong>sf</strong></td>
+<td>Spatial data processing</td>
+</tr>
+<tr class="even">
+<td><strong>rnaturalearth</strong></td>
+<td>Global geographic datasets</td>
+</tr>
+</tbody>
+</table>
 <hr />
 </div>
 <div id="authors" class="section level1">
 <h1>Authors</h1>
-<p>Group 2 – 2026 Course Assignment</p>
+<p><strong>Group 2 – EPI4932 Clinical Data Science</strong></p>
 <ul>
 <li>Lin</li>
 <li>Paulina</li>
@@ -449,11 +533,15 @@ geographic mapping</li>
 </ul>
 <hr />
 </div>
-<div id="notes" class="section level1">
-<h1>Notes</h1>
-<p>All figures and results in the report are generated directly from the
-code contained in the RMarkdown documents, ensuring transparency and
-reproducibility.</p>
+<div id="reproducible-research-statement" class="section level1">
+<h1>Reproducible Research Statement</h1>
+<p>All figures, tables, and results presented in this repository are
+generated directly from the analysis code contained in the RMarkdown
+documents.</p>
+<p>The use of <strong><code>renv</code> environment management</strong>
+ensures that the analysis can be reproduced with identical package
+versions, supporting transparency, reproducibility, and scientific
+reliability.</p>
 </div>
 
 
