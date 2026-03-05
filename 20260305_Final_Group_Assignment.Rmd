@@ -1,11 +1,22 @@
 ---
 title: "20260305_Final_Group_Assignment"
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
+geometry: landscape
 ---
 
 Date: `r Sys.Date()`
+
+```{r pdf-widget-setup, include=FALSE}
+# Make knitr convert HTML widgets to images when knitting to PDF
+knitr::opts_chunk$set(dev = "png")
+
+if (knitr::is_latex_output()) {
+  # Helps htmlwidgets behave in non-HTML output
+  options(htmlwidgets.TOHTML_ARGS = list(standalone = FALSE))
+}
+```
 
 # Paulina
 
@@ -217,7 +228,7 @@ This figure highlights heterogeneity in global COVID-19 trends across HDI catego
 
 # Shiqiu (Q)
 
-```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE}
+```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE, fig.width=11, fig.height=6, results='asis'}
 # =========================================================
 # Cumulative COVID-19 Deaths per Million — Interactive Maps
 #   - Flat world + Rotatable globe
@@ -235,7 +246,8 @@ This figure highlights heterogeneity in global COVID-19 trends across HDI catego
 required_packages <- c(
   "readr", "dplyr", "here", "countrycode",
   "plotly", "rnaturalearth", "sf",
-  "htmlwidgets", "knitr", "rstudioapi"
+  "htmlwidgets", "knitr", "rstudioapi",
+  "webshot2"
 )
 
 for (pkg in required_packages) {
@@ -623,7 +635,21 @@ map_flat <- plotly::plot_ly() %>%
     margin = list(l = 0, r = 0, t = 70, b = 0)
   )
 
-map_flat
+if (knitr::is_latex_output()) {
+  if (!requireNamespace("webshot2", quietly = TRUE)) {
+    stop("Package 'webshot2' is required to include Plotly widgets in PDF. Install with install.packages('webshot2').")
+  }
+
+  flat_tmp_html <- out_path("tmp_flat_map.html")
+  flat_png <- out_path("CumDeathsPerMillion_FlatWorld.png")
+
+  htmlwidgets::saveWidget(map_flat, flat_tmp_html, selfcontained = TRUE)
+  webshot2::webshot(flat_tmp_html, flat_png, vwidth = 1400, vheight = 800)
+
+  knitr::include_graphics(flat_png)
+} else {
+  map_flat
+}
 
 map_flat$sizingPolicy <- htmlwidgets::sizingPolicy(
   browser.fill = TRUE,
@@ -704,7 +730,21 @@ map_globe <- plotly::plot_ly() %>%
   ) %>%
   plotly::config(displayModeBar = TRUE, scrollZoom = TRUE)
 
-map_globe
+if (knitr::is_latex_output()) {
+  if (!requireNamespace("webshot2", quietly = TRUE)) {
+    stop("Package 'webshot2' is required to include Plotly widgets in PDF. Install with install.packages('webshot2').")
+  }
+
+  globe_tmp_html <- out_path("tmp_globe_map.html")
+  globe_png <- out_path("CumDeathsPerMillion_RotatableGlobe.png")
+
+  htmlwidgets::saveWidget(map_globe, globe_tmp_html, selfcontained = TRUE)
+  webshot2::webshot(globe_tmp_html, globe_png, vwidth = 1400, vheight = 800)
+
+  knitr::include_graphics(globe_png)
+} else {
+  map_globe
+}
 
 map_globe$sizingPolicy <- htmlwidgets::sizingPolicy(
   browser.fill = TRUE,
