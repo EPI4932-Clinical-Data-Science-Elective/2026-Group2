@@ -6,31 +6,29 @@ output:
 geometry: landscape
 ---
 
-Date: `r Sys.Date()`
+<div style="border:4px solid #2e7d32; padding:20px; border-radius:10px; background:#e8f5e9; font-size:16px;">
 
+🟢🟢🟢 **IMPORTANT REPRODUCIBILITY NOTICE — PLEASE READ BEFORE KNITTING** 🟢🟢🟢
 
-# Reproducibility
+To ensure that this report can be reproduced exactly, the analysis depends on the **specific R package environment recorded in `renv.lock`.**
 
-All analyses in this report were conducted using the **R statistical computing environment**.
-To ensure computational reproducibility, the project uses the **`renv` package** for dependency management. The `renv` framework creates a project-specific library and records the exact package versions required to reproduce the analysis in the file `renv.lock`.
-
-The analysis can be reproduced on another machine by restoring the project environment and rendering the report. After cloning or downloading the project repository, the required package environment can be installed using:
+Before knitting or rendering this document, please **restore the project environment** by running:
 
 ```r
 renv::restore()
 ```
 
-This command installs the exact versions of all R packages recorded in `renv.lock`.
-Once the environment has been restored, the report can be reproduced by knitting the RMarkdown document:
+This step installs the **exact package versions used during development**.
 
-```r
-rmarkdown::render("Final_Group_Assignment.Rmd")
-```
+If the environment is not restored first, the report may:
 
-The project structure separates **source code**, **data**, and **generated outputs** to facilitate reproducibility. Raw data are stored in the `open_covid_data/` directory, while generated figures and tables are written to dedicated output folders. All analyses are executed directly from the RMarkdown document, ensuring that figures and results are generated from the underlying code when the report is rendered.
+• fail to render  
+• encounter missing package errors  
+• produce results or figures that differ from the original analysis  
 
-By combining environment management (`renv`), scripted analysis (RMarkdown), and structured project organisation, the workflow enables the analysis to be reproduced across different operating systems and computing environments.
+Thank you for restoring the environment before running the report.
 
+</div>
 
 
 ```{r pdf-widget-setup, include=FALSE}

@@ -100,7 +100,39 @@ This removes existing project packages and reinstalls them strictly according to
 
 ---
 
-### 7. Reproducing the analysis
+### 7. Viewing packages recorded in the lockfile
+
+The packages captured in the lockfile can be viewed using:
+
+```r
+sort(names(renv::lockfile_read("renv.lock")$Packages))
+```
+
+This prints the names of all packages recorded in `renv.lock`.
+
+#### Package list from `renv.lock`
+
+```{r lockfile-packages-table, echo=FALSE, message=FALSE, warning=FALSE}
+lock <- renv::lockfile_read("renv.lock")$Packages
+
+pkgs_df <- data.frame(
+  Package = names(lock),
+  Version = vapply(lock, `[[`, character(1), "Version"),
+  Source  = vapply(lock, `[[`, character(1), "Source"),
+  stringsAsFactors = FALSE
+)
+
+pkgs_df <- pkgs_df[order(pkgs_df$Package), ]
+
+knitr::kable(
+  pkgs_df,
+  caption = "Packages recorded in renv.lock (sorted alphabetically)"
+)
+```
+
+---
+
+### 8. Reproducing the analysis
 
 After restoring the environment, the analysis can be reproduced by knitting the report:
 

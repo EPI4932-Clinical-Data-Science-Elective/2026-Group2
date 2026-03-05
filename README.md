@@ -6,73 +6,93 @@
 ![Course](https://img.shields.io/badge/course-EPI4932-orange)
 ![License](https://img.shields.io/badge/license-Academic-lightgrey)
 
-### EPI4932 – Clinical Data Science Elective
+<div style="border:4px solid #2e7d32; padding:20px; border-radius:10px; background:#e8f5e9; font-size:16px;">
 
-**2026 Group Assignment (Group 2)**
+🟢🟢🟢 <strong>IMPORTANT REPRODUCIBILITY NOTICE — PLEASE READ BEFORE RUNNING THE ANALYSIS</strong> 🟢🟢🟢
 
-This repository contains the **code, data pipeline, and outputs** used to analyse global COVID-19 trends. The project investigates **temporal and spatial patterns in COVID-19 cases and deaths worldwide** using reproducible data science workflows.
+To ensure that this project can be reproduced exactly, the analysis depends on the **specific R package environment recorded in `renv.lock`.**
 
-The analysis produces:
+Before running the analysis or rendering the report, please restore the project environment:
 
-* **Time-series analyses by continent**
-* **Time-series analyses stratified by Human Development Index (HDI)**
-* Global **choropleth maps**
+<pre><code>renv::restore()</code></pre>
 
-All results are generated **directly from code**, ensuring full **transparency, reproducibility, and methodological clarity**.
+This installs the **exact package versions used during development**.
+
+If the environment is not restored first, the project may:
+
+• fail to run  
+• encounter missing package errors  
+• produce results or figures that differ from the original analysis  
+
+Thank you for restoring the environment before running the report.
+
+</div>
 
 ---
 
-# Project Overview
+### EPI4932 – Clinical Data Science Elective  
+**2026 Group Assignment (Group 2)**
 
-This project demonstrates a reproducible workflow for analysing global epidemiological data using the R ecosystem.
+This repository contains a **reproducible analysis of global COVID-19 trends**, including:
 
-The analysis pipeline:
+- Time-series analyses by **continent**
+- Time-series analyses by **Human Development Index (HDI)**
+- Global **choropleth maps**
 
-1. Imports global COVID-19 datasets
-2. Cleans and structures time-series data
-3. Produces visualisations of global trends
-4. Generates a reproducible analytical report using **RMarkdown**
-
-The final report integrates all results and visualisations.
+All results are generated **directly from code using R and RMarkdown**, ensuring transparency and reproducibility.
 
 ---
 
 # Key Visualisations
 
-## COVID-19 Time-Series by Continent
+### COVID-19 Time-Series by Continent
 
 <p align="center">
 <img src="Outputs_Time_Series_Continent_by_Paulina/time_series_continent.png" width="75%">
 </p>
 
-Temporal evolution of COVID-19 cases across continents.
-
 ---
 
-## COVID-19 Time-Series by Human Development Index
+### COVID-19 Time-Series by Human Development Index
 
 <p align="center">
 <img src="Outputs_Time_Series_HDI_by_Lin/time_series_hdi.png" width="75%">
 </p>
 
-Comparison of COVID-19 trajectories across countries grouped by development level.
-
 ---
 
-## Global COVID-19 Choropleth Map
+### Global COVID-19 Choropleth Map
 
 <p align="center">
 <img src="Outputs_Choropleth_Map_by_Shiqiu/choropleth_map.png" width="75%">
 </p>
 
-Spatial visualisation of global COVID-19 metrics using geographic mapping.
+---
+
+# Running the Analysis
+
+### 1. Restore the environment
+
+```r
+renv::restore()
+````
+
+### 2. Render the report
+
+```r
+rmarkdown::render("Final_Group_Assignment.Rmd")
+```
+
+This command will:
+
+* load the dataset
+* execute the analysis pipeline
+* regenerate all figures
+* rebuild the final HTML report
 
 ---
 
 # Repository Structure
-
-<details>
-<summary><strong>Click to expand repository structure</strong></summary>
 
 ```
 .
@@ -97,61 +117,18 @@ Spatial visualisation of global COVID-19 metrics using geographic mapping.
 └── 2026-Group2.Rproj
 ```
 
-</details>
-
 ---
 
-# Reproducibility
+# Software
 
-This project uses the **`renv`** package to ensure reproducible dependency management.
-
-The file:
-
-```
-renv.lock
-```
-
-records the exact versions of all R packages used during development.
-
-To recreate the environment:
-
-```r
-renv::restore()
-```
-
-This installs all required packages with the precise versions specified in the lockfile.
-
----
-
-# Running the Analysis
-
-After restoring the environment, the full analysis pipeline can be reproduced by rendering the report:
-
-```r
-rmarkdown::render("Final_Group_Assignment.Rmd")
-```
-
-This command:
-
-* loads the dataset
-* executes the full analysis pipeline
-* regenerates all figures
-* rebuilds the final HTML report
-
----
-
-# Software Stack
-
-| Tool              | Purpose                               |
-| ----------------- | ------------------------------------- |
-| **R**             | Statistical computing                 |
-| **RMarkdown**     | Reproducible analytical reporting     |
-| **renv**          | Environment and dependency management |
-| **dplyr**         | Data manipulation                     |
-| **ggplot2**       | Data visualisation                    |
-| **plotly**        | Interactive visualisation             |
-| **sf**            | Spatial data processing               |
-| **rnaturalearth** | Global geographic datasets            |
+* **R**
+* **RMarkdown**
+* **renv**
+* **dplyr**
+* **ggplot2**
+* **plotly**
+* **sf**
+* **rnaturalearth**
 
 ---
 
