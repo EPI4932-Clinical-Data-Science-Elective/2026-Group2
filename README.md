@@ -47,7 +47,7 @@ All results are generated **directly from code using R and RMarkdown**, ensuring
 ### COVID-19 Time-Series by Continent
 
 <p align="center">
-<img src="Outputs_Time_Series_Continent_by_Paulina/time_series_continent.png" width="75%">
+<img src="Figures/Time_Series_Continent.png" width="75%">
 </p>
 
 ---
@@ -55,7 +55,7 @@ All results are generated **directly from code using R and RMarkdown**, ensuring
 ### COVID-19 Time-Series by Human Development Index
 
 <p align="center">
-<img src="Outputs_Time_Series_HDI_by_Lin/time_series_hdi.png" width="75%">
+<img src="Figures/Time_Series_HDI.png" width="75%">
 </p>
 
 ---
@@ -63,7 +63,7 @@ All results are generated **directly from code using R and RMarkdown**, ensuring
 ### Global COVID-19 Choropleth Map
 
 <p align="center">
-<img src="Outputs_Choropleth_Map_by_Shiqiu/choropleth_map.png" width="75%">
+<img src="Figures/Choropleth_Map.png" width="75%">
 </p>
 
 ---
