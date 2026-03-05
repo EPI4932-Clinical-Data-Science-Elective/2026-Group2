@@ -1,7 +1,8 @@
 ---
-title: "20260305_Final_Group_Assignment"
+title: "20260305_Final_Group2_Assignment"
+authors: Paulina STapor (i6325887), Shiqiu Meng () ,Lin Yuan (i6420954)
 output:
-  # pdf_document: default
+  pdf_document: default
   html_document: default
 geometry: landscape
 ---
@@ -286,6 +287,7 @@ Methodologically, daily new cases per million were aggregated to monthly means w
 The figure shows clear differences in monthly new COVID-19 case trends across HDI categories, but these differences are not constant over time. Overall, the high and very high HDI groups reported higher case levels than the medium and low HDI groups in most months, suggesting generally higher reported new-case rates in countries with higher development levels. However, the size of these differences changed over time, as the groups did not follow the same timing or pattern of increase, decline, and rebound. This indicates that HDI-related differences were evident not only in magnitude, but also in the shape and timing of trends. The 95% CIs reflect uncertainty around the group means and within-group variability; when the shaded bands are wide or substantially overlap, between-group differences should be interpreted cautiously.
 
 This figure highlights heterogeneity in global COVID-19 trends across HDI categories from a development-stratified perspective, and provides information for discussing possible differences in surveillance and reporting systems, epidemic timing, and public health responses. However, this is a descriptive visualization and should not be interpreted causally.
+
 
 # Shiqiu (Q)
 
