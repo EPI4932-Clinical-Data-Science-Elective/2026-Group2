@@ -6,27 +6,26 @@
 ![Course](https://img.shields.io/badge/course-EPI4932-orange)
 ![License](https://img.shields.io/badge/license-Academic-lightgrey)
 
-<div style="border:4px solid #2e7d32; padding:20px; border-radius:10px; background:#e8f5e9; font-size:16px;">
-
-🟢🟢🟢 <strong>IMPORTANT REPRODUCIBILITY NOTICE — PLEASE READ BEFORE RUNNING THE ANALYSIS</strong> 🟢🟢🟢
-
-To ensure that this project can be reproduced exactly, the analysis depends on the **specific R package environment recorded in `renv.lock`.**
-
-Before running the analysis or rendering the report, please restore the project environment:
-
-<pre><code>renv::restore()</code></pre>
-
-This installs the **exact package versions used during development**.
-
-If the environment is not restored first, the project may:
-
-• fail to run  
-• encounter missing package errors  
-• produce results or figures that differ from the original analysis  
-
-Thank you for restoring the environment before running the report.
-
-</div>
+> [!IMPORTANT]
+> **IMPORTANT REPRODUCIBILITY NOTICE — PLEASE READ BEFORE RUNNING THE ANALYSIS**
+>
+> To ensure that this project can be reproduced exactly, the analysis depends on the **specific R package environment recorded in `renv.lock`.**
+>
+> Before running the analysis or rendering the report, please restore the project environment:
+>
+> ```r
+> renv::restore()
+> ```
+>
+> This installs the **exact package versions used during development**.
+>
+> If the environment is not restored first, the project may:
+>
+> • fail to run  
+> • encounter missing package errors  
+> • produce results or figures that differ from the original analysis
+>
+> Thank you for restoring the environment before running the report.
 
 ---
 
