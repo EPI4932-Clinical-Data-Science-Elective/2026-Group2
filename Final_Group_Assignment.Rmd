@@ -8,15 +8,62 @@ geometry: landscape
 
 Date: `r Sys.Date()`
 
+
+# Reproducibility
+
+All analyses in this report were conducted using the **R statistical computing environment**.
+To ensure computational reproducibility, the project uses the **`renv` package** for dependency management. The `renv` framework creates a project-specific library and records the exact package versions required to reproduce the analysis in the file `renv.lock`.
+
+The analysis can be reproduced on another machine by restoring the project environment and rendering the report. After cloning or downloading the project repository, the required package environment can be installed using:
+
+```r
+renv::restore()
+```
+
+This command installs the exact versions of all R packages recorded in `renv.lock`.
+Once the environment has been restored, the report can be reproduced by knitting the RMarkdown document:
+
+```r
+rmarkdown::render("Final_Group_Assignment.Rmd")
+```
+
+The project structure separates **source code**, **data**, and **generated outputs** to facilitate reproducibility. Raw data are stored in the `open_covid_data/` directory, while generated figures and tables are written to dedicated output folders. All analyses are executed directly from the RMarkdown document, ensuring that figures and results are generated from the underlying code when the report is rendered.
+
+By combining environment management (`renv`), scripted analysis (RMarkdown), and structured project organisation, the workflow enables the analysis to be reproduced across different operating systems and computing environments.
+
+
+
 ```{r pdf-widget-setup, include=FALSE}
 # Make knitr convert HTML widgets to images when knitting to PDF
 knitr::opts_chunk$set(dev = "png")
+
+# Ensure all file paths are relative to the project root
+knitr::opts_knit$set(root.dir = here::here())
 
 if (knitr::is_latex_output()) {
   # Helps htmlwidgets behave in non-HTML output
   options(htmlwidgets.TOHTML_ARGS = list(standalone = FALSE))
 }
 ```
+
+
+```{r setup-renv, include=FALSE}
+# ------------------------------------------------------------------
+# renv dependency hint
+#
+# `rnaturalearthdata` is used indirectly by
+# rnaturalearth::ne_countries(). Because packages in this project
+# are loaded dynamically via a loop over `required_packages`,
+# renv::dependencies() cannot detect this dependency automatically.
+#
+# Referencing the package namespace below allows renv to detect it
+# when renv::snapshot() scans the project.
+# ------------------------------------------------------------------
+
+rnaturalearthdata::countries110
+```
+
+
 
 # Paulina
 
@@ -30,7 +77,7 @@ library(slider)
 library(scales)
 
 # Load dataset
-Covid_cleaned <- read_csv("open_covid_data/Covid_cleaned.csv")
+Covid_cleaned <- read_csv(here::here("open_covid_data", "Covid_cleaned.csv"))
 
 # Compute continent-level daily cases
 continent_daily <- Covid_cleaned %>%
@@ -261,18 +308,19 @@ This figure highlights heterogeneity in global COVID-19 trends across HDI catego
 # =========================================================
 required_packages <- c(
   "readr", "dplyr", "here", "countrycode",
-  "plotly", "rnaturalearth", "sf",
+  "plotly", "rnaturalearth", "rnaturalearthdata", "sf",
   "htmlwidgets", "knitr", "rstudioapi",
   "webshot2"
 )
 
 for (pkg in required_packages) {
   if (!requireNamespace(pkg, quietly = TRUE)) {
-    install.packages(pkg, dependencies = TRUE)
+    stop(
+      "Missing package: ", pkg, "\n",
+      "Run renv::restore() (or install.packages('", pkg, "') ) before knitting."
+    )
   }
-  suppressPackageStartupMessages(
-    library(pkg, character.only = TRUE)
-  )
+  suppressPackageStartupMessages(library(pkg, character.only = TRUE))
 }
 
 

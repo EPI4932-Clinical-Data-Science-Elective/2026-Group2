@@ -1,0 +1,123 @@
+---
+title: "Reproducible_Environment_Management"
+output: html_document
+---
+
+## Reproducible Environment Management with `renv`
+
+This project uses the **`renv`** package to ensure that the analysis can be reproduced with the exact versions of R packages used during development.
+
+### 1. Initialising the project environment
+
+A project-specific package library is created using:
+
+```r
+install.packages("renv")
+renv::init()
+```
+
+This creates:
+
+```
+renv/        # project-specific library and infrastructure
+renv.lock    # record of package versions used in the project
+```
+
+---
+
+### 2. Installing required packages
+
+Packages can be installed normally:
+
+```r
+install.packages("package_name")
+```
+
+When `renv` is active, the package is installed into the **project-specific library** instead of the global R library.
+
+Example:
+
+```r
+install.packages("ggplot2")
+install.packages("plotly")
+```
+
+---
+
+### 3. Recording the environment
+
+After installing or updating packages, the environment is recorded using:
+
+```r
+renv::snapshot()
+```
+
+This writes the exact package versions into the file:
+
+```
+renv.lock
+```
+
+---
+
+### 4. Restoring the environment
+
+On another machine (or after cloning the repository), the environment can be recreated using:
+
+```r
+renv::restore()
+```
+
+This installs the package versions specified in `renv.lock`.
+
+---
+
+### 5. Verifying environment consistency
+
+To confirm that the project library matches the lockfile:
+
+```r
+renv::status()
+```
+
+A successful result will show:
+
+```
+No issues found -- the project is in a consistent state.
+```
+
+---
+
+### 6. Simulating a fresh environment (reproducibility test)
+
+To simulate running the project on a completely new machine:
+
+```r
+renv::restore(clean = TRUE)
+```
+
+This removes existing project packages and reinstalls them strictly according to the lockfile.
+
+---
+
+### 7. Reproducing the analysis
+
+After restoring the environment, the analysis can be reproduced by knitting the report:
+
+```r
+rmarkdown::render("Final_Group_Assignment.Rmd")
+```
+
+---
+
+### Summary of Key `renv` Commands
+
+| Command                       | Purpose                                   |
+| ----------------------------- | ----------------------------------------- |
+| `renv::init()`                | Initialise a project-specific environment |
+| `renv::snapshot()`            | Record package versions                   |
+| `renv::restore()`             | Reinstall packages from the lockfile      |
+| `renv::status()`              | Check environment consistency             |
+| `renv::restore(clean = TRUE)` | Simulate a clean environment              |
+
+Using `renv` ensures that the analysis remains **fully reproducible across different machines and operating systems**.
