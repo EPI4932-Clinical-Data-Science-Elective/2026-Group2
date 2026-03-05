@@ -1,7 +1,7 @@
 ---
 title: "20260305_Final_Group_Assignment"
 output:
-  pdf_document: default
+  # pdf_document: default
   html_document: default
 geometry: landscape
 ---
@@ -77,12 +77,26 @@ ggplot(continent_daily, aes(x = date, y = new_cases_pm_7dma, color = continent))
   ) +
   theme_minimal(base_size = 14) +
   theme(
-    plot.title = element_text(face = "bold", size = 16),
+    plot.title = element_text(face = "bold", size = 14),
     plot.subtitle = element_text(size = 13),
     legend.position = "bottom",
     panel.grid.minor = element_blank()
   )
 
+# Create output folder
+dir.create("Outputs_Time_Series_Continent_by_Paulina", recursive = TRUE, showWarnings = FALSE)
+
+# Save the last plotted ggplot
+ggsave(
+  filename = file.path(
+    "Outputs_Time_Series_Continent_by_Paulina",
+    "continent_newcases_per_million_7dma.png"
+  ),
+  plot = ggplot2::last_plot(),
+  width = 12,
+  height = 6,
+  dpi = 300
+)
 ```
 
 # Lin
@@ -205,12 +219,14 @@ p_final <- ggplot(groupMonth, aes(x = month, y = mean_value, colour = hdi_group,
     plot.title = element_text(face = "bold")
   )
 
+# Create output folder
+dir.create("Outputs_Time_Series_HDI_by_Lin", recursive = TRUE, showWarnings = FALSE)
+
 # Save figure
-dir.create(file.path("outputs", "figures"), recursive = TRUE, showWarnings = FALSE)
 ggsave(
-  filename = file.path("outputs", "figures", "global_hdi_newcases_monthlymean_unweighted.png"),
+  filename = file.path("Outputs_Time_Series_HDI_by_Lin", "global_hdi_newcases_monthlymean_unweighted.png"),
   plot = p_final,
-  width = 10, height = 6, dpi = 300
+  width = 16, height = 6, dpi = 300
 )
 
 # Print plot
@@ -228,7 +244,7 @@ This figure highlights heterogeneity in global COVID-19 trends across HDI catego
 
 # Shiqiu (Q)
 
-```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE, fig.width=11, fig.height=6, results='asis'}
+```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE, out.width="100%", fig.align="left"}
 # =========================================================
 # Cumulative COVID-19 Deaths per Million — Interactive Maps
 #   - Flat world + Rotatable globe
@@ -262,17 +278,13 @@ for (pkg in required_packages) {
 
 # =========================================================
 # 1) Output path helpers (no hard-coding)
-#   - out_dir = folder containing this script
-#   - out_path("x.csv") returns full path inside out_dir
 # =========================================================
 get_this_script_dir <- function() {
-  # --- 1) Knitting context (Rmd / Quarto)
   p <- knitr::current_input()
   if (!is.null(p) && nzchar(p)) {
     return(normalizePath(dirname(p), winslash = "/", mustWork = FALSE))
   }
   
-  # --- 2) Interactive RStudio context
   if (rstudioapi::isAvailable()) {
     ctx <- rstudioapi::getActiveDocumentContext()
     if (!is.null(ctx$path) && nzchar(ctx$path)) {
@@ -280,11 +292,13 @@ get_this_script_dir <- function() {
     }
   }
   
-  # --- 3) Fallback
   normalizePath(getwd(), winslash = "/", mustWork = FALSE)
 }
 
-out_dir <- get_this_script_dir()
+out_dir <- file.path(
+  get_this_script_dir(),
+  "Outputs_Choropleth_Map_by_Shiqiu"
+)
 
 out_path <- function(...) {
   file.path(out_dir, ...)
@@ -585,7 +599,7 @@ if (!is.finite(zmax_deaths) || zmax_deaths <= 0) {
 base_geo_flat <- list(
   showframe      = FALSE,
   showcoastlines = FALSE,
-  projection     = list(type = "natural earth"),
+  projection     = list(type = "natural earth", scale = 1.15),
   showocean      = TRUE,
   oceancolor     = "#FAFAFA",
   showland       = TRUE,
@@ -632,7 +646,7 @@ map_flat <- plotly::plot_ly() %>%
       ")"
     ),
     geo    = base_geo_flat,
-    margin = list(l = 0, r = 0, t = 70, b = 0)
+    margin = list(l = 0, r = 0, t = 50, b = 0)
   )
 
 if (knitr::is_latex_output()) {
@@ -644,7 +658,12 @@ if (knitr::is_latex_output()) {
   flat_png <- out_path("CumDeathsPerMillion_FlatWorld.png")
 
   htmlwidgets::saveWidget(map_flat, flat_tmp_html, selfcontained = TRUE)
-  webshot2::webshot(flat_tmp_html, flat_png, vwidth = 1400, vheight = 800)
+  webshot2::webshot(
+    url      = flat_tmp_html,
+    file     = flat_png,
+    selector = "div.html-widget",
+    zoom     = 2
+  )
 
   knitr::include_graphics(flat_png)
 } else {
@@ -674,7 +693,11 @@ htmlwidgets::saveWidget(
 # 13) Rotatable globe (orthographic; same 2-trace logic)
 # =========================================================
 geo_globe <- list(
-  projection = list(type = "orthographic", rotation = list(lon = 10, lat = 20)),
+  projection = list(
+    type = "orthographic",
+    rotation = list(lon = 10, lat = 20),
+    scale = 1.15
+  ),
   showframe      = FALSE,
   showocean      = TRUE,
   oceancolor     = "#FAFAFA",
@@ -726,7 +749,7 @@ map_globe <- plotly::plot_ly() %>%
       ")"
     ),
     geo    = geo_globe,
-    margin = list(l = 0, r = 0, t = 70, b = 0)
+    margin = list(l = 0, r = 0, t = 50, b = 0)
   ) %>%
   plotly::config(displayModeBar = TRUE, scrollZoom = TRUE)
 
@@ -739,7 +762,12 @@ if (knitr::is_latex_output()) {
   globe_png <- out_path("CumDeathsPerMillion_RotatableGlobe.png")
 
   htmlwidgets::saveWidget(map_globe, globe_tmp_html, selfcontained = TRUE)
-  webshot2::webshot(globe_tmp_html, globe_png, vwidth = 1400, vheight = 800)
+  webshot2::webshot(
+    url      = globe_tmp_html,
+    file     = globe_png,
+    selector = "div.html-widget",
+    zoom     = 2
+  )
 
   knitr::include_graphics(globe_png)
 } else {
