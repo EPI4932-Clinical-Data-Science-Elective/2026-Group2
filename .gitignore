@@ -52,3 +52,6 @@ rsconnect/
 renv/library/
 renv/staging/
 renv/python/
+
+# Generated Plotly / htmlwidgets dependency folders
+*_files/
