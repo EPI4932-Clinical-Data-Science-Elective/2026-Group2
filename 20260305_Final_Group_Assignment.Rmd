@@ -1,3 +1,223 @@
+---
+title: "20260305_Final_Group_Assignment"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+Date: `r Sys.Date()`
+
+# Paulina
+
+```{r continent-analysis, echo=TRUE, message=FALSE, warning=FALSE}
+
+# Load required libraries
+library(readr)
+library(dplyr)
+library(ggplot2)
+library(slider)
+library(scales)
+
+# Load dataset
+Covid_cleaned <- read_csv("open_covid_data/Covid_cleaned.csv")
+
+# Compute continent-level daily cases
+continent_daily <- Covid_cleaned %>%
+  mutate(
+    est_new_cases = (new_cases_per_million / 1e6) * population
+  ) %>%
+  group_by(continent, date) %>%
+  summarise(
+    new_cases = sum(est_new_cases, na.rm = TRUE),
+    pop = sum(population, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  mutate(
+    new_cases_per_million_cont = (new_cases / pop) * 1e6
+  ) %>%
+  group_by(continent) %>%
+  arrange(continent, date) %>%
+  mutate(
+    new_cases_pm_7dma = slider::slide_dbl(
+      new_cases_per_million_cont,
+      mean,
+      .before = 6,
+      .complete = TRUE,
+      na.rm = TRUE
+    )
+  ) %>%
+  ungroup()
+
+# Remove rows with NA moving averages
+continent_daily <- continent_daily %>%
+  filter(!is.na(new_cases_pm_7dma))
+
+# Plot results
+ggplot(continent_daily, aes(x = date, y = new_cases_pm_7dma, color = continent)) +
+  geom_line(linewidth = 1.1, alpha = 0.95) +
+  scale_x_date(date_breaks = "6 months", date_labels = "%b\n%Y") +
+  scale_y_continuous(labels = label_number(accuracy = 1)) +
+  labs(
+    title = "COVID-19 New Cases per Million (7-day moving average)",
+    subtitle = "Countries pooled to continent level (population-weighted)",
+    x = "Date",
+    y = "New cases per million (7DMA)",
+    color = "Continent"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 16),
+    plot.subtitle = element_text(size = 13),
+    legend.position = "bottom",
+    panel.grid.minor = element_blank()
+  )
+
+```
+
+# Lin
+
+This analysis uses country-level COVID data from all continents.
+Countries are classified into four UNDP HDI categories (Low, Medium, High, Very high HDI).
+Daily new cases per million are aggregated to monthly means within each country, then averaged across countries (unweighted) within each HDI category. The plot shows monthly means with 95% CI.
+
+```{r hdi-analysis, echo=TRUE, message=FALSE, warning=FALSE}
+
+# Load required libraries
+library(readr)
+library(dplyr)
+library(lubridate)
+library(ggplot2)
+
+# 1) Read cleaned COVID dataset
+PATH_COVID <- file.path("open_covid_data", "Covid_cleaned.csv")
+covid_raw <- readr::read_csv(PATH_COVID, show_col_types = FALSE)
+
+# 2) Rename variables and set types
+recodedCovid <- covid_raw %>%
+  dplyr::rename(
+    country = location,
+    num_new_cases_per_million = new_cases_per_million,
+    num_hdi = human_development_index
+  ) %>%
+  dplyr::mutate(
+    date = as.Date(date),
+    continent = as.character(continent),
+    country = as.character(country),
+    num_new_cases_per_million = as.numeric(num_new_cases_per_million),
+    num_hdi = as.numeric(num_hdi)
+  )
+
+# 3) Keep country rows (all continents) and required values
+recodedCovid <- recodedCovid %>%
+  dplyr::filter(
+    !is.na(continent),
+    !is.na(date),
+    !is.na(country),
+    !is.na(num_new_cases_per_million),
+    !is.na(num_hdi)
+  )
+
+# 4) Create monthly time variable
+recodedCovid <- recodedCovid %>%
+  dplyr::mutate(month = lubridate::floor_date(date, "month"))
+
+# 5) Compute one HDI value per country (mean across available rows) + HDI groups
+hdiCountry <- recodedCovid %>%
+  dplyr::group_by(country) %>%
+  dplyr::summarise(
+    num_hdi_country = mean(num_hdi, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  dplyr::mutate(
+    hdi_group = dplyr::case_when(
+      num_hdi_country < 0.550 ~ "Low HDI",
+      num_hdi_country < 0.700 ~ "Medium HDI",
+      num_hdi_country < 0.800 ~ "High HDI",
+      num_hdi_country >= 0.800 ~ "Very high HDI",
+      TRUE ~ NA_character_
+    ),
+    hdi_group = factor(
+      hdi_group,
+      levels = c("Low HDI", "Medium HDI", "High HDI", "Very high HDI")
+    )
+  )
+
+# Join HDI group back to daily data
+recodedCovid <- recodedCovid %>%
+  dplyr::left_join(
+    hdiCountry %>% dplyr::select(country, hdi_group),
+    by = "country"
+  ) %>%
+  dplyr::filter(!is.na(hdi_group))
+
+# 6) Within each country, compute monthly mean of daily new cases per million
+countryMonth <- recodedCovid %>%
+  dplyr::group_by(country, hdi_group, month) %>%
+  dplyr::summarise(
+    monthly_mean_new_cases_pm = mean(num_new_cases_per_million, na.rm = TRUE),
+    .groups = "drop"
+  )
+
+# 7) Within each HDI group and month, compute unweighted country average + 95% CI
+groupMonth <- countryMonth %>%
+  dplyr::group_by(hdi_group, month) %>%
+  dplyr::summarise(
+    mean_value = mean(monthly_mean_new_cases_pm, na.rm = TRUE),
+    sd_value = sd(monthly_mean_new_cases_pm, na.rm = TRUE),
+    n_countries = dplyr::n(),
+    se = sd_value / sqrt(n_countries),
+    lower_95 = mean_value - 1.96 * se,
+    upper_95 = mean_value + 1.96 * se,
+    .groups = "drop"
+  ) %>%
+  dplyr::arrange(hdi_group, month)
+
+# 8) Plot global monthly trend by HDI category
+p_final <- ggplot(groupMonth, aes(x = month, y = mean_value, colour = hdi_group, fill = hdi_group)) +
+  geom_ribbon(aes(ymin = lower_95, ymax = upper_95),
+              alpha = 0.18, colour = NA, na.rm = TRUE) +
+  geom_line(linewidth = 1.1, na.rm = TRUE) +
+  scale_x_date(
+    date_breaks = "1 months",
+    labels = function(x) paste0(month.abb[lubridate::month(x)], ". ", lubridate::year(x))
+  ) +
+  labs(
+    x = "Month",
+    y = "mean new cases per million",
+    title = "Global Trends in monthly New COVID-19 Cases per Million by HDI category",
+    colour = "HDI category",
+    fill = "HDI category"
+  ) +
+  theme_bw() +
+  theme(
+    axis.text.x = element_text(angle = 45, hjust = 1),
+    plot.title = element_text(face = "bold")
+  )
+
+# Save figure
+dir.create(file.path("outputs", "figures"), recursive = TRUE, showWarnings = FALSE)
+ggsave(
+  filename = file.path("outputs", "figures", "global_hdi_newcases_monthlymean_unweighted.png"),
+  plot = p_final,
+  width = 10, height = 6, dpi = 300
+)
+
+# Print plot
+p_final
+
+```
+
+This figure shows global monthly trends in new COVID-19 cases per million across countries grouped by the Human Development Index (HDI). HDI is a composite indicator used to reflect a country’s overall level of development, typically incorporating dimensions such as health, education, and income. 
+
+Methodologically, daily new cases per million were aggregated to monthly means within each country, and then an unweighted average across countries was calculated within each HDI category for each month. An unweighted average was used so that each country contributed equally, allowing the figure to better reflect country-level average patterns within HDI categories rather than being dominated by a small number of highly populated countries. HDI groups were defined using the UNDP standard classification and the Shaded bands indicate 95% CIs around the monthly group mean.
+
+The figure shows clear differences in monthly new COVID-19 case trends across HDI categories, but these differences are not constant over time. Overall, the high and very high HDI groups reported higher case levels than the medium and low HDI groups in most months, suggesting generally higher reported new-case rates in countries with higher development levels. However, the size of these differences changed over time, as the groups did not follow the same timing or pattern of increase, decline, and rebound. This indicates that HDI-related differences were evident not only in magnitude, but also in the shape and timing of trends. The 95% CIs reflect uncertainty around the group means and within-group variability; when the shaded bands are wide or substantially overlap, between-group differences should be interpreted cautiously.
+
+This figure highlights heterogeneity in global COVID-19 trends across HDI categories from a development-stratified perspective, and provides information for discussing possible differences in surveillance and reporting systems, epidemic timing, and public health responses. However, this is a descriptive visualization and should not be interpreted causally.
+
+# Shiqiu (Q)
+
+```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE}
 # =========================================================
 # Cumulative COVID-19 Deaths per Million — Interactive Maps
 #   - Flat world + Rotatable globe
@@ -394,7 +614,8 @@ map_flat <- plotly::plot_ly() %>%
   ) %>%
   plotly::layout(
     title  = paste0(
-      "Cumulative COVID-19 deaths per million (flat world; overall latest = ",
+      "Cumulative COVID-19 deaths per million",
+      "<br>(flat world; overall latest = ",
       as.character(latest_date_overall),
       ")"
     ),
@@ -420,7 +641,7 @@ htmlwidgets::saveWidget(
   libdir         = flat_libdir
 )
 
-browseURL(flat_html)
+# browseURL(flat_html)
 
 
 # =========================================================
@@ -473,7 +694,8 @@ map_globe <- plotly::plot_ly() %>%
   ) %>%
   plotly::layout(
     title  = paste0(
-      "Cumulative COVID-19 deaths per million (rotatable globe; overall latest = ",
+      "Cumulative COVID-19 deaths per million",
+      "<br>(rotatable globe; overall latest = ",
       as.character(latest_date_overall),
       ")"
     ),
@@ -500,4 +722,6 @@ htmlwidgets::saveWidget(
   libdir        = globe_libdir
 )
 
-browseURL(globe_html)
+# browseURL(globe_html)
+```
+

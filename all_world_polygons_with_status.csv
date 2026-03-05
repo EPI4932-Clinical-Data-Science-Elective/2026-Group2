@@ -1,4 +1,4 @@
-iso_code,polygon_name,status,reason,hdi_2019,hdi_category
+iso_code,polygon_name,status,reason,latest_date,deaths_pm_latest
 AFG,Afghanistan,Missing (grey),Not present in dataset (or not convertible via dataset location names),NA,NA
 ASM,American Samoa,Missing (grey),Not present in dataset (or not convertible via dataset location names),NA,NA
 AND,Andorra,Missing (grey),Not present in dataset (or not convertible via dataset location names),NA,NA
@@ -152,92 +152,92 @@ ESH,W. Sahara,Missing (grey),Not present in dataset (or not convertible via data
 WLF,Wallis and Futuna Is.,Missing (grey),Not present in dataset (or not convertible via dataset location names),NA,NA
 SWZ,eSwatini,Missing (grey),Not present in dataset (or not convertible via dataset location names),NA,NA
 ALA,Åland,Missing (grey),Not present in dataset (or not convertible via dataset location names),NA,NA
-ALB,Albania,Non-missing (mapped with HDI),OK,0.795,High
-DZA,Algeria,Non-missing (mapped with HDI),OK,0.748,High
-ARG,Argentina,Non-missing (mapped with HDI),OK,0.845,Very high
-AUS,Australia,Non-missing (mapped with HDI),OK,0.944,Very high
-AUT,Austria,Non-missing (mapped with HDI),OK,0.922,Very high
-BGD,Bangladesh,Non-missing (mapped with HDI),OK,0.632,Medium
-BEL,Belgium,Non-missing (mapped with HDI),OK,0.931,Very high
-BEN,Benin,Non-missing (mapped with HDI),OK,0.545,Low
-BIH,Bosnia and Herz.,Non-missing (mapped with HDI),OK,0.78,High
-BRA,Brazil,Non-missing (mapped with HDI),OK,0.765,High
-BGR,Bulgaria,Non-missing (mapped with HDI),OK,0.816,Very high
-BFA,Burkina Faso,Non-missing (mapped with HDI),OK,0.452,Low
-CAN,Canada,Non-missing (mapped with HDI),OK,0.929,Very high
-CHL,Chile,Non-missing (mapped with HDI),OK,0.851,Very high
-CHN,China,Non-missing (mapped with HDI),OK,0.761,High
-COL,Colombia,Non-missing (mapped with HDI),OK,0.767,High
-CRI,Costa Rica,Non-missing (mapped with HDI),OK,0.81,Very high
-HRV,Croatia,Non-missing (mapped with HDI),OK,0.851,Very high
-DNK,Denmark,Non-missing (mapped with HDI),OK,0.94,Very high
-DJI,Djibouti,Non-missing (mapped with HDI),OK,0.524,Low
-DOM,Dominican Rep.,Non-missing (mapped with HDI),OK,0.756,High
-ECU,Ecuador,Non-missing (mapped with HDI),OK,0.759,High
-EGY,Egypt,Non-missing (mapped with HDI),OK,0.707,High
-SLV,El Salvador,Non-missing (mapped with HDI),OK,0.673,Medium
-EST,Estonia,Non-missing (mapped with HDI),OK,0.892,Very high
-ETH,Ethiopia,Non-missing (mapped with HDI),OK,0.485,Low
-FJI,Fiji,Non-missing (mapped with HDI),OK,0.743,High
-GMB,Gambia,Non-missing (mapped with HDI),OK,0.496,Low
-GEO,Georgia,Non-missing (mapped with HDI),OK,0.812,Very high
-GHA,Ghana,Non-missing (mapped with HDI),OK,0.611,Medium
-GRC,Greece,Non-missing (mapped with HDI),OK,0.888,Very high
-HTI,Haiti,Non-missing (mapped with HDI),OK,0.51,Low
-HUN,Hungary,Non-missing (mapped with HDI),OK,0.854,Very high
-ISL,Iceland,Non-missing (mapped with HDI),OK,0.949,Very high
-IND,India,Non-missing (mapped with HDI),OK,0.645,Medium
-IDN,Indonesia,Non-missing (mapped with HDI),OK,0.718,High
-IRN,Iran,Non-missing (mapped with HDI),OK,0.783,High
-IRL,Ireland,Non-missing (mapped with HDI),OK,0.955,Very high
-ISR,Israel,Non-missing (mapped with HDI),OK,0.919,Very high
-ITA,Italy,Non-missing (mapped with HDI),OK,0.892,Very high
-KAZ,Kazakhstan,Non-missing (mapped with HDI),OK,0.825,Very high
-KEN,Kenya,Non-missing (mapped with HDI),OK,0.601,Medium
-KGZ,Kyrgyzstan,Non-missing (mapped with HDI),OK,0.697,Medium
-LAO,Laos,Non-missing (mapped with HDI),OK,0.613,Medium
-LVA,Latvia,Non-missing (mapped with HDI),OK,0.866,Very high
-LBR,Liberia,Non-missing (mapped with HDI),OK,0.48,Low
-LTU,Lithuania,Non-missing (mapped with HDI),OK,0.882,Very high
-LUX,Luxembourg,Non-missing (mapped with HDI),OK,0.916,Very high
-MWI,Malawi,Non-missing (mapped with HDI),OK,0.483,Low
-MYS,Malaysia,Non-missing (mapped with HDI),OK,0.81,Very high
-MLT,Malta,Non-missing (mapped with HDI),OK,0.895,Very high
-MUS,Mauritius,Non-missing (mapped with HDI),OK,0.804,Very high
-MEX,Mexico,Non-missing (mapped with HDI),OK,0.779,High
-MDA,Moldova,Non-missing (mapped with HDI),OK,0.75,High
-MNG,Mongolia,Non-missing (mapped with HDI),OK,0.737,High
-MAR,Morocco,Non-missing (mapped with HDI),OK,0.686,Medium
-MOZ,Mozambique,Non-missing (mapped with HDI),OK,0.456,Low
-MMR,Myanmar,Non-missing (mapped with HDI),OK,0.583,Medium
-NPL,Nepal,Non-missing (mapped with HDI),OK,0.602,Medium
-NER,Niger,Non-missing (mapped with HDI),OK,0.394,Low
-NOR,Norway,Non-missing (mapped with HDI),OK,0.957,Very high
-PAK,Pakistan,Non-missing (mapped with HDI),OK,0.557,Medium
-PAN,Panama,Non-missing (mapped with HDI),OK,0.815,Very high
-PRY,Paraguay,Non-missing (mapped with HDI),OK,0.728,High
-PRT,Portugal,Non-missing (mapped with HDI),OK,0.864,Very high
-ROU,Romania,Non-missing (mapped with HDI),OK,0.828,Very high
-RUS,Russia,Non-missing (mapped with HDI),OK,0.824,Very high
-SYC,Seychelles,Non-missing (mapped with HDI),OK,0.796,High
-SVK,Slovakia,Non-missing (mapped with HDI),OK,0.86,Very high
-ZAF,South Africa,Non-missing (mapped with HDI),OK,0.709,High
-KOR,South Korea,Non-missing (mapped with HDI),OK,0.916,Very high
-ESP,Spain,Non-missing (mapped with HDI),OK,0.904,Very high
-LKA,Sri Lanka,Non-missing (mapped with HDI),OK,0.782,High
-SWE,Sweden,Non-missing (mapped with HDI),OK,0.945,Very high
-TZA,Tanzania,Non-missing (mapped with HDI),OK,0.529,Low
-THA,Thailand,Non-missing (mapped with HDI),OK,0.777,High
-TLS,Timor-Leste,Non-missing (mapped with HDI),OK,0.606,Medium
-TGO,Togo,Non-missing (mapped with HDI),OK,0.515,Low
-TUN,Tunisia,Non-missing (mapped with HDI),OK,0.74,High
-TUR,Turkey,Non-missing (mapped with HDI),OK,0.82,Very high
-UGA,Uganda,Non-missing (mapped with HDI),OK,0.544,Low
-UKR,Ukraine,Non-missing (mapped with HDI),OK,0.779,High
-GBR,United Kingdom,Non-missing (mapped with HDI),OK,0.932,Very high
-USA,United States of America,Non-missing (mapped with HDI),OK,0.926,Very high
-URY,Uruguay,Non-missing (mapped with HDI),OK,0.817,Very high
-VNM,Vietnam,Non-missing (mapped with HDI),OK,0.704,High
-YEM,Yemen,Non-missing (mapped with HDI),OK,0.47,Low
-ZMB,Zambia,Non-missing (mapped with HDI),OK,0.584,Medium
-ZWE,Zimbabwe,Non-missing (mapped with HDI),OK,0.571,Medium
+ALB,Albania,Non-missing (mapped),OK,2021-10-01,941.546
+DZA,Algeria,Non-missing (mapped),OK,2021-10-01,130.333
+ARG,Argentina,Non-missing (mapped),OK,2021-10-01,2526.541
+AUS,Australia,Non-missing (mapped),OK,2021-10-01,51.225
+AUT,Austria,Non-missing (mapped),OK,2021-10-01,1217.949
+BGD,Bangladesh,Non-missing (mapped),OK,2021-10-01,165.547
+BEL,Belgium,Non-missing (mapped),OK,2021-10-01,2201.794
+BEN,Benin,Non-missing (mapped),OK,2021-10-01,12.77
+BIH,Bosnia and Herz.,Non-missing (mapped),OK,2021-10-01,3258.812
+BRA,Brazil,Non-missing (mapped),OK,2021-10-01,2790.997
+BGR,Bulgaria,Non-missing (mapped),OK,2021-10-01,3040.459
+BFA,Burkina Faso,Non-missing (mapped),OK,2021-10-01,8.559
+CAN,Canada,Non-missing (mapped),OK,2021-10-01,734.845
+CHL,Chile,Non-missing (mapped),OK,2021-10-01,1950.619
+CHN,China,Non-missing (mapped),OK,2021-10-01,3.21
+COL,Colombia,Non-missing (mapped),OK,2021-10-01,2464.331
+CRI,Costa Rica,Non-missing (mapped),OK,2021-10-01,1247.895
+HRV,Croatia,Non-missing (mapped),OK,2021-10-01,2119.237
+DNK,Denmark,Non-missing (mapped),OK,2021-10-01,457.743
+DJI,Djibouti,Non-missing (mapped),OK,2021-10-01,166.634
+DOM,Dominican Rep.,Non-missing (mapped),OK,2021-10-01,369.646
+ECU,Ecuador,Non-missing (mapped),OK,2021-10-01,1831.459
+EGY,Egypt,Non-missing (mapped),OK,2021-10-01,166.577
+SLV,El Salvador,Non-missing (mapped),OK,2021-10-01,497.814
+EST,Estonia,Non-missing (mapped),OK,2021-10-01,1024.006
+ETH,Ethiopia,Non-missing (mapped),OK,2021-10-01,47.762
+FJI,Fiji,Non-missing (mapped),OK,2021-10-01,698.86
+GMB,Gambia,Non-missing (mapped),OK,2021-10-01,135.91
+GEO,Georgia,Non-missing (mapped),OK,2021-10-01,2255.405
+GHA,Ghana,Non-missing (mapped),OK,2021-10-01,36.43
+GRC,Greece,Non-missing (mapped),OK,2021-10-01,1432.877
+HTI,Haiti,Non-missing (mapped),OK,2021-10-01,52.939
+HUN,Hungary,Non-missing (mapped),OK,2021-10-01,3134.575
+ISL,Iceland,Non-missing (mapped),OK,2021-10-01,96.109
+IND,India,Non-missing (mapped),OK,2021-10-01,321.925
+IDN,Indonesia,Non-missing (mapped),OK,2021-10-01,513.913
+IRN,Iran,Non-missing (mapped),OK,2021-10-01,1419.085
+IRL,Ireland,Non-missing (mapped),OK,2021-10-01,1053.402
+ISR,Israel,Non-missing (mapped),OK,2021-10-01,835.863
+ITA,Italy,Non-missing (mapped),OK,2021-10-01,2169.596
+KAZ,Kazakhstan,Non-missing (mapped),OK,2021-10-01,837.433
+KEN,Kenya,Non-missing (mapped),OK,2021-10-01,93.261
+KGZ,Kyrgyzstan,Non-missing (mapped),OK,2021-10-01,393.311
+LAO,Laos,Non-missing (mapped),OK,2021-10-01,2.71
+LVA,Latvia,Non-missing (mapped),OK,2021-10-01,1457.47
+LBR,Liberia,Non-missing (mapped),OK,2021-10-01,55.21
+LTU,Lithuania,Non-missing (mapped),OK,2021-10-01,1864.036
+LUX,Luxembourg,Non-missing (mapped),OK,2021-10-01,1315.346
+MWI,Malawi,Non-missing (mapped),OK,2021-10-01,116.146
+MYS,Malaysia,Non-missing (mapped),OK,2021-10-01,807.171
+MLT,Malta,Non-missing (mapped),OK,2021-10-01,887.425
+MUS,Mauritius,Non-missing (mapped),OK,2021-10-01,65.964
+MEX,Mexico,Non-missing (mapped),OK,2021-10-01,2133.988
+MDA,Moldova,Non-missing (mapped),OK,2021-10-01,1690.596
+MNG,Mongolia,Non-missing (mapped),OK,2021-10-01,388.973
+MAR,Morocco,Non-missing (mapped),OK,2021-10-01,382.65
+MOZ,Mozambique,Non-missing (mapped),OK,2021-10-01,59.634
+MMR,Myanmar,Non-missing (mapped),OK,2021-10-01,324.581
+NPL,Nepal,Non-missing (mapped),OK,2021-10-01,375.671
+NER,Niger,Non-missing (mapped),OK,2021-10-01,8.078
+NOR,Norway,Non-missing (mapped),OK,2021-10-01,157.53
+PAK,Pakistan,Non-missing (mapped),OK,2021-10-01,123.584
+PAN,Panama,Non-missing (mapped),OK,2021-10-01,1650.089
+PRY,Paraguay,Non-missing (mapped),OK,2021-10-01,2243.602
+PRT,Portugal,Non-missing (mapped),OK,2021-10-01,1768.208
+ROU,Romania,Non-missing (mapped),OK,2021-10-01,1945.339
+RUS,Russia,Non-missing (mapped),OK,2021-10-01,1401.009
+SYC,Seychelles,Non-missing (mapped),OK,2021-10-01,1132.343
+SVK,Slovakia,Non-missing (mapped),OK,2021-10-01,2316.359
+ZAF,South Africa,Non-missing (mapped),OK,2021-10-01,1460.728
+KOR,South Korea,Non-missing (mapped),OK,2021-10-01,48.806
+ESP,Spain,Non-missing (mapped),OK,2021-10-01,1849.665
+LKA,Sri Lanka,Non-missing (mapped),OK,2021-10-01,603.052
+SWE,Sweden,Non-missing (mapped),OK,2021-10-01,1463.363
+TZA,Tanzania,Non-missing (mapped),OK,2021-10-01,11.691
+THA,Thailand,Non-missing (mapped),OK,2021-10-01,240.883
+TLS,Timor-Leste,Non-missing (mapped),OK,2021-10-01,87.062
+TGO,Togo,Non-missing (mapped),OK,2021-10-01,27.01
+TUN,Tunisia,Non-missing (mapped),OK,2021-10-01,2086.251
+TUR,Turkey,Non-missing (mapped),OK,2021-10-01,755.667
+UGA,Uganda,Non-missing (mapped),OK,2021-10-01,67.037
+UKR,Ukraine,Non-missing (mapped),OK,2021-10-01,1384.136
+GBR,United Kingdom,Non-missing (mapped),OK,2021-10-01,2011.095
+USA,United States of America,Non-missing (mapped),OK,2021-10-01,2107.742
+URY,Uruguay,Non-missing (mapped),OK,2021-10-01,1737.657
+VNM,Vietnam,Non-missing (mapped),OK,2021-10-01,197.996
+YEM,Yemen,Non-missing (mapped),OK,2021-10-01,56.706
+ZMB,Zambia,Non-missing (mapped),OK,2021-10-01,192.858
+ZWE,Zimbabwe,Non-missing (mapped),OK,2021-10-01,306.384
