@@ -1,17 +1,20 @@
 # Global COVID-19 Case and Mortality Patterns Across Development Levels and Regions: An Exploratory Data Analysis
 
-> **Note:**  
-> The final submission is contained in the `main` branch.  
-> The branch `20260305-cds-group-2-final-assignment-same-as-main` contains identical content and was used during final preparation.
-
 ![Language](https://img.shields.io/badge/language-R-blue)
 ![Reproducible](https://img.shields.io/badge/reproducible-renv-green)
 ![Report](https://img.shields.io/badge/report-RMarkdown-purple)
 ![Course](https://img.shields.io/badge/course-EPI4934B-orange)
 ![License](https://img.shields.io/badge/license-Academic-lightgrey)
 
+> [!NOTE]  
+> The **final submission for this assignment is contained in the `main` branch**.  
+>  
+> The branch `20260305-cds-group-2-final-assignment-same-as-main` was used **only during the preparation of the final version** and is retained for reference. It is **not intended for evaluation**.  
+>  
+> **Thank you for taking the time to review our work.**
+
 > [!IMPORTANT]
-> **IMPORTANT REPRODUCIBILITY NOTICE — PLEASE READ BEFORE RUNNING THE ANALYSIS**
+> **Regarding Reproducibility — Please Read Before Running the Analysis**
 >
 > To ensure that this project can be reproduced exactly, the analysis depends on the **specific R package environment recorded in `renv.lock`.**
 >
