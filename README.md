@@ -1,4 +1,8 @@
-# COVID-19 Global Trends Analysis
+# Global COVID-19 Case and Mortality Patterns Across Development Levels and Regions: An Exploratory Data Analysis
+
+> **Note:**  
+> The final submission for this assignment is contained in the `main` branch.  
+> The branch `20260305-cds-group-2-final-assignment-same-as-main` is identical to `main`.
 
 ![Language](https://img.shields.io/badge/language-R-blue)
 ![Reproducible](https://img.shields.io/badge/reproducible-renv-green)
