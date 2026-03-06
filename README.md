@@ -146,7 +146,7 @@ This command will:
 
 # Authors
 
-**Group 2 – EPI4932 Clinical Data Science**
+**Group 2 – EPI4934B Clinical Data Science**
 
 * Lin
 * Paulina
