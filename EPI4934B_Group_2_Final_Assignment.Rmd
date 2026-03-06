@@ -167,33 +167,47 @@ Preparation of Figure 3 and its description; code integration and repository ref
 
 <div style="margin:22px 0 26px 0;">
 
-<a href="EPI4934B_Group_2_Abstract_Figures.pdf" target="_blank"
+<button onclick="togglePDF()"
 style="
 display:inline-block;
 background:#1f4e79;
 color:#ffffff;
 padding:10px 20px;
 border-radius:8px;
-text-decoration:none;
+border:1px solid #1f4e79;
 font-weight:600;
 font-size:0.95em;
-letter-spacing:0.2px;
-border:1px solid #1f4e79;
+cursor:pointer;
 box-shadow:0 2px 6px rgba(0,0,0,0.08);
-transition:all 0.15s ease;
 ">
 📄 View PDF Version (Abstract & Figures)
-</a>
+</button>
 
-<span style="
-margin-left:10px;
-color:#666;
-font-size:0.9em;
-">
+<span style="margin-left:10px;color:#666;font-size:0.9em;">
 PDF report version (no code)
 </span>
 
+<div id="pdfviewer" style="display:none;margin-top:18px;">
+<iframe 
+src="EPI4934B_Group_2_Abstract_Figures.pdf"
+width="100%"
+height="700px"
+style="border:1px solid #ddd;border-radius:6px;">
+</iframe>
 </div>
+
+</div>
+
+<script>
+function togglePDF() {
+  var x = document.getElementById("pdfviewer");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 
 
 
