@@ -1,13 +1,13 @@
 # Global COVID-19 Case and Mortality Patterns Across Development Levels and Regions: An Exploratory Data Analysis
 
 > **Note:**  
-> The final submission for this assignment is contained in the `main` branch.  
-> The branch `20260305-cds-group-2-final-assignment-same-as-main` is identical to `main`.
+> The final submission is contained in the `main` branch.  
+> The branch `20260305-cds-group-2-final-assignment-same-as-main` contains identical content and was used during final preparation.
 
 ![Language](https://img.shields.io/badge/language-R-blue)
 ![Reproducible](https://img.shields.io/badge/reproducible-renv-green)
 ![Report](https://img.shields.io/badge/report-RMarkdown-purple)
-![Course](https://img.shields.io/badge/course-EPI4932-orange)
+![Course](https://img.shields.io/badge/course-EPI4934B-orange)
 ![License](https://img.shields.io/badge/license-Academic-lightgrey)
 
 > [!IMPORTANT]
@@ -33,7 +33,7 @@
 
 ---
 
-### EPI4932 – Clinical Data Science Elective  
+### EPI4934B – Clinical Data Science
 **2026 Group Assignment (Group 2)**
 
 This repository contains a **reproducible analysis of global COVID-19 trends**, including:
@@ -83,15 +83,16 @@ renv::restore()
 ### 2. Render the report
 
 ```r
-rmarkdown::render("Final_Group_Assignment.Rmd")
+rmarkdown::render("EPI4934B_Group_2_Final_Assignment.Rmd")
 ```
 
 This command will:
 
+* restore the package environment
 * load the dataset
 * execute the analysis pipeline
 * regenerate all figures
-* rebuild the final HTML report
+* rebuild the final HTML report (`EPI4934B_Group_2_Final_Assignment.html`)
 
 ---
 
@@ -99,10 +100,14 @@ This command will:
 
 ```
 .
-├── Final_Group_Assignment.Rmd
-├── Final_Group_Assignment.html
+├── EPI4934B_Group_2_Final_Assignment.Rmd
+├── EPI4934B_Group_2_Final_Assignment.html
+├── EPI4934B_Group_2_Abstract_Figures.pdf
+│
 ├── Reproducible_Environment_Management.Rmd
 ├── Reproducible_Environment_Management.html
+│
+├── Figures/
 │
 ├── open_covid_data/
 │
@@ -117,6 +122,10 @@ This command will:
 ├── .Rprofile
 ├── .RData
 ├── .Rhistory
+│
+├── README.md
+├── README.html
+│
 └── 2026-Group2.Rproj
 ```
 
