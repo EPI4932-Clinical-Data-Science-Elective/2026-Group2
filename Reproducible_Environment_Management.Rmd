@@ -1,6 +1,12 @@
 ---
-title: "Reproducible_Environment_Management"
-output: html_document
+title: "Reproducible Environment Management"
+author: "Shiqiu (Q) Meng"
+date: "6 March 2026"
+output:
+  html_document:
+    theme: cosmo
+    highlight: tango
+    toc: true
 ---
 
 ## Reproducible Environment Management with `renv`
@@ -137,7 +143,7 @@ knitr::kable(
 After restoring the environment, the analysis can be reproduced by knitting the report:
 
 ```r
-rmarkdown::render("Group_2_Final_Assignment.Rmd")
+rmarkdown::render("EPI4934B_Group_2_Final_Assignment.Rmd")
 ```
 
 ---

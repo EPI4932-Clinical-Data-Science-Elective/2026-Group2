@@ -164,9 +164,33 @@ Preparation of Figure 3 and its description; code integration and repository ref
 
 
 
-# Figure 1. Global Trends in Monthly COVID-19 Cases per Million by Human Development Index (HDI) Category, October 2020–October 2021
+# Figure 1
 
+<div style="margin: 16px 0 22px 0; padding: 14px 18px; background: #f8f9fa; border-left: 4px solid #6c757d; border-radius: 6px;">
+
+<p style="margin: 0 0 8px 0; font-weight: 700;">
+Figure 1. Global Trends in Monthly COVID-19 Cases per Million by Human Development Index (HDI) Category
+</p>
+
+<p style="margin: 0; line-height: 1.6;">
 Global trends in monthly new COVID-19 cases per million population by Human Development Index (HDI) category from October 2020 to October 2021. Countries are grouped according to the UNDP HDI classification (low, medium, high, and very high). Lines represent the monthly mean number of reported new COVID-19 cases per million population within each HDI category, and shaded areas indicate 95% confidence intervals.
+</p>
+
+</div>
+
+<details style="margin-bottom:14px;">
+<summary style="
+cursor:pointer;
+display:inline-block;
+padding:8px 14px;
+background:#2c7be5;
+color:white;
+border-radius:6px;
+font-weight:600;
+font-size:0.9em;
+">
+▶ Show analysis code and figure
+</summary>
 
 ```{r hdi-analysis, echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -299,9 +323,40 @@ p_final
 
 
 
-# Figure 2. COVID-19 Cases per Million (7-Day Moving Average) by Continent, October 2020–October 2021
 
+
+
+
+
+
+
+# Figure 2
+
+<div style="margin: 16px 0 22px 0; padding: 14px 18px; background: #f8f9fa; border-left: 4px solid #6c757d; border-radius: 6px;">
+
+<p style="margin: 0 0 8px 0; font-weight: 700;">
+Figure 2. COVID-19 Cases per Million (7-Day Moving Average) by Continent, October 2020–October 2021
+</p>
+
+<p style="margin: 0; line-height: 1.6;">
 Trends in new COVID-19 cases per million population (7-day moving average) by continent from 1 October 2020 to 1 October 2021. Countries are pooled at the continent level, and estimates are population-weighted.
+</p>
+
+</div>
+
+<details style="margin-bottom:14px;">
+<summary style="
+cursor:pointer;
+display:inline-block;
+padding:8px 14px;
+background:#2c7be5;
+color:white;
+border-radius:6px;
+font-weight:600;
+font-size:0.9em;
+">
+▶ Show analysis code and figure
+</summary>
 
 ```{r continent-analysis, echo=TRUE, message=FALSE, warning=FALSE}
 
@@ -384,11 +439,42 @@ ggsave(
 
 
 
-# Figure 3. Global Distribution of Cumulative COVID-19 Deaths per Million as of 1 October 2021
 
+
+
+
+
+
+
+# Figure 3
+
+<div style="margin: 16px 0 22px 0; padding: 14px 18px; background: #f8f9fa; border-left: 4px solid #6c757d; border-radius: 6px;">
+
+<p style="margin: 0 0 8px 0; font-weight: 700;">
+Figure 3. Global Distribution of Cumulative COVID-19 Deaths per Million as of 1 October 2021
+</p>
+
+<p style="margin: 0; line-height: 1.6;">
 Global distribution of cumulative COVID-19 deaths per million population as of 1 October 2021. Countries are coloured according to the cumulative number of reported COVID-19 deaths per million inhabitants, with darker colours indicating higher mortality. Mortality rates are standardised per million population to enable comparison across countries with different population sizes. Data represent the most recent available values up to 1 October 2021. Countries shown in grey indicate locations for which no data were available or were not reported in the dataset at the time of analysis.
+</p>
 
-```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE, out.width="100%", fig.align="left"}
+</div>
+
+<details style="margin-bottom:14px;">
+<summary style="
+cursor:pointer;
+display:inline-block;
+padding:8px 14px;
+background:#2c7be5;
+color:white;
+border-radius:6px;
+font-weight:600;
+font-size:0.9em;
+">
+▶ Show analysis code and figure
+</summary>
+
+```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE}
 # =========================================================
 # Cumulative COVID-19 Deaths per Million, Interactive Maps
 #   - Flat world + Rotatable globe
@@ -682,16 +768,35 @@ readr::write_csv(
   out_path("all_world_polygons_with_status.csv")
 )
 
-cat("Diagnostics exported to:\n")
-cat(" - ", out_path("non_missing_cum_deaths_per_million_countries.csv"), "\n", sep = "")
-cat(" - ", out_path("missing_cum_deaths_per_million_or_join_countries.csv"), "\n", sep = "")
-cat(" - ", out_path("iso_conversion_failed_locations.csv"), "\n", sep = "")
-cat(" - ", out_path("all_world_polygons_with_status.csv"), "\n\n", sep = "")
+diag_files <- c(
+  "non_missing_cum_deaths_per_million_countries.csv",
+  "missing_cum_deaths_per_million_or_join_countries.csv",
+  "iso_conversion_failed_locations.csv",
+  "all_world_polygons_with_status.csv"
+)
 
-cat("Latest date overall in dataset: ", as.character(latest_date_overall), "\n", sep = "")
-cat("ISO conversion failures (rows): ", sum(is.na(df$iso_code)), "\n", sep = "")
-cat("Unique locations failing ISO conversion: ", nrow(iso_failed_locations), "\n\n", sep = "")
+diag_rel_paths <- file.path("Outputs_Choropleth_Map_by_Shiqiu", diag_files)
 
+file_items <- paste0("<li><code>", diag_rel_paths, "</code></li>", collapse = "\n")
+
+diag_box <- sprintf(
+'
+<div style="border-left:6px solid #2e7d32; background:#edf7ed; padding:18px 22px; margin:20px 0; border-radius:6px;">
+  <p style="margin-top:0;"><strong>Diagnostics Summary</strong></p>
+  <p>The following diagnostic files were exported:</p>
+  <ul>%s</ul>
+  <p><strong>Latest date overall in dataset:</strong> %s</p>
+  <p><strong>ISO conversion failures (rows):</strong> %s</p>
+  <p style="margin-bottom:0;"><strong>Unique locations failing ISO conversion:</strong> %s</p>
+</div>
+',
+  file_items,
+  as.character(latest_date_overall),
+  sum(is.na(df$iso_code)),
+  nrow(iso_failed_locations)
+)
+
+knitr::asis_output(diag_box)
 
 # =========================================================
 # 10) Map data prep (NA retained for missing; no 0 imputation)
@@ -767,7 +872,7 @@ map_flat <- plotly::plot_ly() %>%
     zmin         = 0,
     zmax         = zmax_deaths,
     showscale    = TRUE,
-    colorbar     = list(title = "Cumulative deaths / 1M", tickformat = ",.0f"),
+    colorbar     = list(title = "Cumulative deaths / 1M", tickformat = ",.0f", len = 0.4, thickness = 12),
     marker       = list(line = list(color = "#FFFFFF", width = 0.3))
   ) %>%
   plotly::add_trace(
@@ -791,7 +896,7 @@ map_flat <- plotly::plot_ly() %>%
     ),
     geo    = base_geo_flat,
     autosize = FALSE,
-    height = 500,
+    height = 600,
     margin = list(l = 0, r = 0, t = 50, b = 0)
   )
 
@@ -890,7 +995,7 @@ map_globe <- plotly::plot_ly() %>%
     ),
     geo    = geo_globe,
     autosize = FALSE,
-    height = 500,
+    height = 600,
     margin = list(l = 0, r = 0, t = 50, b = 0)
   ) %>%
   plotly::config(displayModeBar = TRUE, scrollZoom = TRUE)
