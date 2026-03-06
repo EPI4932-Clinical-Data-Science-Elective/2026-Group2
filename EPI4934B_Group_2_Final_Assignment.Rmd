@@ -535,6 +535,7 @@ font-size:0.95em;
 border:1px solid #1f4e79;
 box-shadow:0 2px 6px rgba(0,0,0,0.08);
 list-style:none;
+margin-bottom:60px;
 ">
 Show analysis code and figure
 </summary>
