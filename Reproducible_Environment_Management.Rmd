@@ -137,7 +137,7 @@ knitr::kable(
 After restoring the environment, the analysis can be reproduced by knitting the report:
 
 ```r
-rmarkdown::render("Final_Group_Assignment.Rmd")
+rmarkdown::render("Group_2_Final_Assignment.Rmd")
 ```
 
 ---

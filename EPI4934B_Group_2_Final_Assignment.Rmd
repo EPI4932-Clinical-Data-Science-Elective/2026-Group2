@@ -1,27 +1,45 @@
 ---
+# -----------------------------------------------------------------------------
+# NOTE
+# This report is intended to be knitted to HTML output only.
+# Some visualisations (e.g., Plotly maps) may not render correctly in PDF.
+#
+# For reproducibility, please restore the project environment before knitting
+# by running the following command in the R console:
+#     renv::restore()
+#
+# A detailed reproducibility notice is provided below in this document.
+# Additional information on the reproducible environment is available in the
+# GitHub repository README and in Reproducible_Environment_Management.Rmd/HTML.
+# -----------------------------------------------------------------------------
+
 title: "Global COVID-19 Case and Mortality Patterns Across Development Levels and Regions: An Exploratory Data Analysis"
 subtitle: "EPI4934B Clinical Data Science"
 author: "Group 2: Paulina Stapor (i6325887), Shiqiu (Q) Meng (i6251461), Lin Yuan (i6420954)"
 date: "6 March 2026"
+
 output:
   html_document:
     theme: cosmo
     highlight: tango
     toc: true
-    number_sections: true
+    number_sections: false
 ---
 
 
 <div style="border-left:6px solid #2e7d32; background:#edf7ed; padding:18px 22px; margin:20px 0; border-radius:6px;">
 
-<strong>Reproducibility Notice - Run Before Knitting</strong>
+<strong>Reproducibility Notice – Run Before Knitting</strong>
 
 <p>
 To ensure that this report can be reproduced exactly, the analysis depends on the
 <strong>R package environment recorded in <code>renv.lock</code></strong>.
 </p>
 
-<p>Before knitting or rendering this document, restore the project environment by running:</p>
+<p>
+Before knitting or rendering this document, please restore the project environment by
+running the following command <strong>in the R console</strong>:
+</p>
 
 <pre><code>renv::restore()</code></pre>
 
@@ -36,6 +54,17 @@ To ensure that this report can be reproduced exactly, the analysis depends on th
 </ul>
 
 </div>
+
+
+
+
+
+
+
+
+
+
+
 
 
 ```{r pdf-widget-setup, include=FALSE}
@@ -73,7 +102,69 @@ rnaturalearthdata::countries110
 
 
 
-# Global Trends in monthly New COVID-19 Cases per Million by HDI category by Lin
+# Author Contributions
+
+<table style="width:100%; border-collapse:collapse; margin-top:10px;">
+<thead>
+<tr style="border-bottom:2px solid #444;">
+<th style="text-align:left; padding:8px;">Author</th>
+<th style="text-align:left; padding:8px;">Contribution</th>
+</tr>
+</thead>
+
+<tbody>
+
+<tr style="border-bottom:1px solid #ddd;">
+<td style="padding:8px;"><strong>Lin Yuan</strong></td>
+<td style="padding:8px;">
+Preparation of Figure 1 and its description; development of the methods component of the abstract; brainstorming.
+</td>
+</tr>
+
+<tr style="border-bottom:1px solid #ddd;">
+<td style="padding:8px;"><strong>Paulina Stapor</strong></td>
+<td style="padding:8px;">
+Preparation of Figure 2 and its description; development of the abstract; brainstorming.
+</td>
+</tr>
+
+<tr>
+<td style="padding:8px;"><strong>Shiqiu (Q) Meng</strong></td>
+<td style="padding:8px;">
+Preparation of Figure 3 and its description; code integration and repository refactoring; brainstorming.
+</td>
+</tr>
+
+</tbody>
+</table>
+
+
+
+
+
+# Abstract
+
+<div style="padding:18px 22px; background:#f8f9fa; border-left:5px solid #5a5a5a; border-radius:6px; margin:20px 0;">
+
+<p><strong>Background:</strong> The COVID-19 pandemic has unfolded unevenly across the world, with substantial differences in both infection and mortality rates between countries and regions. Differences in development level, surveillance systems, and public health responses may have contributed to these patterns. The Human Development Index (HDI) is a composite index that combines indicators of health, education, and income. Moreover, it may serve as a valuable framework for examining global COVID-19 trends from development and economic perspectives. This study describes global patterns in COVID-19 case incidence and mortality and explores how these trends varied across HDI levels and geographic regions from October 2020 to October 2021.</p>
+
+<p><strong>Methods:</strong> Daily new COVID-19 cases per million were aggregated to monthly means within each country. For each month, an unweighted average across countries was calculated within HDI categories based on the United Nations Development Programme classification, ensuring that each country contributed equally to the group estimates rather than allowing highly populated countries to dominate the averages. Ninety-five percent confidence intervals (CIs) were calculated to reflect uncertainty and within-group variability. In addition to development-stratified analyses, regional case patterns during 2021 were examined using 7-day moving averages of new cases per million. For continental comparisons, country-level data were pooled within each continent using the available reporting countries; therefore, regional estimates reflect only countries with available data and may not include all countries within each continent. Global mortality patterns were also assessed using cumulative COVID-19 deaths per million across countries.</p>
+
+<p><strong>Results:</strong> Clear differences in COVID-19 case trends were observed across HDI categories in both magnitude and temporal pattern (Figure 1). Countries in the high and very high HDI groups generally reported higher levels of new cases per million than those in the medium and low HDI groups, although the size of these differences varied over time. The very high HDI group experienced pronounced peaks in late 2020 to early 2021, followed by declines and later increases during 2021, while high-HDI countries peaked around mid-2021. In contrast, medium- and low-HDI countries maintained lower overall case levels, with only moderate increases during mid-2021. Regional comparisons further demonstrated heterogeneous epidemic timing (Figure 2). Europe and North America experienced large peaks early in 2021 before declining toward mid-year, while South America sustained relatively high case levels for a longer period before gradually decreasing. Asia showed a noticeable rise later in 2021, whereas Africa and Oceania generally reported lower case rates throughout the period. Mortality patterns also varied geographically (Figure 3), with the highest cumulative deaths per million observed in Eastern and South-Eastern Europe, particularly in several Balkan countries. South America represented another high-mortality region, while North America and Western Europe experienced substantial but somewhat lower mortality levels. Much of Asia, Oceania, and Africa reported comparatively lower recorded deaths per capita.</p>
+
+<p><strong>Conclusion:</strong> Global COVID-19 trends differed markedly across development levels and geographic regions, both in the magnitude of reported cases and deaths and in the timing of epidemic waves. Higher HDI countries generally reported higher case rates, while mortality patterns showed particularly high burdens in parts of Europe and South America. However, the results should be interpreted cautiously due to potential differences in reporting practices, incomplete data availability, and variation in surveillance capacity across countries.</p>
+
+</div>
+
+
+
+
+
+
+
+
+
+# Figure 1. Global Trends in Monthly COVID-19 Cases per Million by Human Development Index (HDI) Category, October 2020–October 2021
 
 Global trends in monthly new COVID-19 cases per million population by Human Development Index (HDI) category from October 2020 to October 2021. Countries are grouped according to the UNDP HDI classification (low, medium, high, and very high). Lines represent the monthly mean number of reported new COVID-19 cases per million population within each HDI category, and shaded areas indicate 95% confidence intervals.
 
@@ -208,7 +299,7 @@ p_final
 
 
 
-# COVID-19 New Cases per Million (7-day moving average) by Paulina
+# Figure 2. COVID-19 Cases per Million (7-Day Moving Average) by Continent, October 2020–October 2021
 
 Trends in new COVID-19 cases per million population (7-day moving average) by continent from 1 October 2020 to 1 October 2021. Countries are pooled at the continent level, and estimates are population-weighted.
 
@@ -293,7 +384,7 @@ ggsave(
 
 
 
-# Cumulative COVID-19 deaths per million by Shiqiu (Q)
+# Figure 3. Global Distribution of Cumulative COVID-19 Deaths per Million as of 1 October 2021
 
 Global distribution of cumulative COVID-19 deaths per million population as of 1 October 2021. Countries are coloured according to the cumulative number of reported COVID-19 deaths per million inhabitants, with darker colours indicating higher mortality. Mortality rates are standardised per million population to enable comparison across countries with different population sizes. Data represent the most recent available values up to 1 October 2021. Countries shown in grey indicate locations for which no data were available or were not reported in the dataset at the time of analysis.
 
