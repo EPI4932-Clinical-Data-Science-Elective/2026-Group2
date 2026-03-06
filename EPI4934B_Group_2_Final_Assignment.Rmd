@@ -27,6 +27,7 @@ output:
 ---
 
 
+
 <div style="border-left:6px solid #2e7d32; background:#edf7ed; padding:18px 22px; margin:20px 0; border-radius:6px;">
 
 <strong>Reproducibility Notice – Run Before Knitting</strong>
@@ -98,6 +99,26 @@ rnaturalearthdata::countries110
 ```
 
 
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  document.querySelectorAll("details").forEach(function(el) {
+    const summary = el.querySelector("summary");
+    const showText = "Show analysis code and figure";
+    const hideText = "Hide analysis code and figure";
+
+    summary.textContent = showText;
+
+    el.addEventListener("toggle", function() {
+      summary.textContent = el.open ? hideText : showText;
+    });
+  });
+});
+</script>
+
+
+
+
+
 
 
 
@@ -144,6 +165,38 @@ Preparation of Figure 3 and its description; code integration and repository ref
 
 # Abstract
 
+<div style="margin:22px 0 26px 0;">
+
+<a href="EPI4934B_Group_2_Abstract_Figures.pdf" target="_blank"
+style="
+display:inline-block;
+background:#1f4e79;
+color:#ffffff;
+padding:10px 20px;
+border-radius:8px;
+text-decoration:none;
+font-weight:600;
+font-size:0.95em;
+letter-spacing:0.2px;
+border:1px solid #1f4e79;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+transition:all 0.15s ease;
+">
+📄 View PDF Version (Abstract & Figures)
+</a>
+
+<span style="
+margin-left:10px;
+color:#666;
+font-size:0.9em;
+">
+PDF report version (no code)
+</span>
+
+</div>
+
+
+
 <div style="padding:18px 22px; background:#f8f9fa; border-left:5px solid #5a5a5a; border-radius:6px; margin:20px 0;">
 
 <p><strong>Background:</strong> The COVID-19 pandemic has unfolded unevenly across the world, with substantial differences in both infection and mortality rates between countries and regions. Differences in development level, surveillance systems, and public health responses may have contributed to these patterns. The Human Development Index (HDI) is a composite index that combines indicators of health, education, and income. Moreover, it may serve as a valuable framework for examining global COVID-19 trends from development and economic perspectives. This study describes global patterns in COVID-19 case incidence and mortality and explores how these trends varied across HDI levels and geographic regions from October 2020 to October 2021.</p>
@@ -178,18 +231,22 @@ Global trends in monthly new COVID-19 cases per million population by Human Deve
 
 </div>
 
-<details style="margin-bottom:14px;">
+<details>
+
 <summary style="
 cursor:pointer;
 display:inline-block;
-padding:8px 14px;
-background:#2c7be5;
+padding:10px 20px;
+background:#1f4e79;
 color:white;
-border-radius:6px;
+border-radius:8px;
 font-weight:600;
-font-size:0.9em;
+font-size:0.95em;
+border:1px solid #1f4e79;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+list-style:none;
 ">
-▶ Show analysis code and figure
+Show analysis code and figure
 </summary>
 
 ```{r hdi-analysis, echo=TRUE, message=FALSE, warning=FALSE}
@@ -303,7 +360,7 @@ p_final <- ggplot(groupMonth, aes(x = month, y = mean_value, colour = hdi_group,
   theme_bw() +
   theme(
     axis.text.x = element_text(angle = 45, hjust = 1),
-    plot.title = element_text(face = "bold")
+    plot.title = element_text(size = 12, face = "bold")
   )
 
 # Create output folder
@@ -344,18 +401,22 @@ Trends in new COVID-19 cases per million population (7-day moving average) by co
 
 </div>
 
-<details style="margin-bottom:14px;">
+<details>
+
 <summary style="
 cursor:pointer;
 display:inline-block;
-padding:8px 14px;
-background:#2c7be5;
+padding:10px 20px;
+background:#1f4e79;
 color:white;
-border-radius:6px;
+border-radius:8px;
 font-weight:600;
-font-size:0.9em;
+font-size:0.95em;
+border:1px solid #1f4e79;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+list-style:none;
 ">
-▶ Show analysis code and figure
+Show analysis code and figure
 </summary>
 
 ```{r continent-analysis, echo=TRUE, message=FALSE, warning=FALSE}
@@ -460,18 +521,22 @@ Global distribution of cumulative COVID-19 deaths per million population as of 1
 
 </div>
 
-<details style="margin-bottom:14px;">
+<details>
+
 <summary style="
 cursor:pointer;
 display:inline-block;
-padding:8px 14px;
-background:#2c7be5;
+padding:10px 20px;
+background:#1f4e79;
 color:white;
-border-radius:6px;
+border-radius:8px;
 font-weight:600;
-font-size:0.9em;
+font-size:0.95em;
+border:1px solid #1f4e79;
+box-shadow:0 2px 6px rgba(0,0,0,0.08);
+list-style:none;
 ">
-▶ Show analysis code and figure
+Show analysis code and figure
 </summary>
 
 ```{r cumulative-deaths-choropleth-map, echo=TRUE, message=FALSE, warning=FALSE}
@@ -844,8 +909,10 @@ if (!is.finite(zmax_deaths) || zmax_deaths <= 0) {
 
 # =========================================================
 # 12) Flat world map (2 traces: coloured + grey overlay)
+#    - geo domain and colourbar aligned
 # =========================================================
 base_geo_flat <- list(
+  domain         = list(x = c(0.00, 0.82), y = c(0.08, 0.92)),
   showframe      = FALSE,
   showcoastlines = FALSE,
   projection     = list(type = "natural earth", scale = 1.15),
@@ -859,45 +926,55 @@ base_geo_flat <- list(
 
 map_flat <- plotly::plot_ly() %>%
   plotly::add_trace(
-    data         = map_non_missing,
-    type         = "choropleth",
-    locations    = ~iso_a3,
-    locationmode = "ISO-3",
-    z            = ~deaths_pm_latest,
-    text         = ~hover,
-    hoverinfo    = "text",
-    colorscale   = colorscale_deaths,
+    data           = map_non_missing,
+    type           = "choropleth",
+    locations      = ~iso_a3,
+    locationmode   = "ISO-3",
+    z              = ~deaths_pm_latest,
+    text           = ~hover,
+    hoverinfo      = "text",
+    colorscale     = colorscale_deaths,
     autocolorscale = FALSE,
-    zauto        = FALSE,
-    zmin         = 0,
-    zmax         = zmax_deaths,
-    showscale    = TRUE,
-    colorbar     = list(title = "Cumulative deaths / 1M", tickformat = ",.0f", len = 0.4, thickness = 12),
-    marker       = list(line = list(color = "#FFFFFF", width = 0.3))
+    zauto          = FALSE,
+    zmin           = 0,
+    zmax           = zmax_deaths,
+    showscale      = TRUE,
+    colorbar       = list(
+      title     = list(text = "Cumulative deaths / 1M"),
+      tickformat = ",.0f",
+      len       = 0.84,
+      thickness = 12,
+      x         = 0.87,
+      xanchor   = "left",
+      y         = 0.50,
+      yanchor   = "middle"
+    ),
+    marker         = list(line = list(color = "#FFFFFF", width = 0.3))
   ) %>%
   plotly::add_trace(
-    data         = map_missing,
-    type         = "choropleth",
-    locations    = ~iso_a3,
-    locationmode = "ISO-3",
-    z            = I(1),
-    text         = ~hover,
-    hoverinfo    = "text",
-    colorscale   = list(list(0, "#BDBDBD"), list(1, "#BDBDBD")),
-    showscale    = FALSE,
-    marker       = list(line = list(color = "#FFFFFF", width = 0.3))
+    data           = map_missing,
+    type           = "choropleth",
+    locations      = ~iso_a3,
+    locationmode   = "ISO-3",
+    z              = I(1),
+    text           = ~hover,
+    hoverinfo      = "text",
+    colorscale     = list(list(0, "#BDBDBD"), list(1, "#BDBDBD")),
+    showscale      = FALSE,
+    marker         = list(line = list(color = "#FFFFFF", width = 0.3))
   ) %>%
   plotly::layout(
-    title  = paste0(
+    title = paste0(
       "Cumulative COVID-19 deaths per million",
       "<br>(flat world; overall latest = ",
       as.character(latest_date_overall),
       ")"
     ),
-    geo    = base_geo_flat,
+    geo = base_geo_flat,
     autosize = FALSE,
-    height = 600,
-    margin = list(l = 0, r = 0, t = 50, b = 0)
+    width = 900,
+    height = 500,
+    margin = list(l = 0, r = 30, t = 70, b = 0)
   )
 
 if (knitr::is_latex_output()) {
@@ -935,7 +1012,7 @@ htmlwidgets::saveWidget(
 
 
 # =========================================================
-# 13) Rotatable globe (orthographic; same 2-trace logic)
+# 13) Rotatable globe (orthographic)
 # =========================================================
 geo_globe <- list(
   projection = list(
@@ -971,7 +1048,7 @@ map_globe <- plotly::plot_ly() %>%
     zmin         = 0,
     zmax         = zmax_deaths,
     showscale    = TRUE,
-    colorbar     = list(title = "Cumulative deaths / 1M", tickformat = ",.0f"),
+    colorbar     = list(title = "Cumulative deaths / 1M", tickformat = ",.0f", thickness = 12),
     marker       = list(line = list(color = "#FFFFFF", width = 0.4))
   ) %>%
   plotly::add_trace(
@@ -995,7 +1072,7 @@ map_globe <- plotly::plot_ly() %>%
     ),
     geo    = geo_globe,
     autosize = FALSE,
-    height = 600,
+    height = 500,
     margin = list(l = 0, r = 0, t = 50, b = 0)
   ) %>%
   plotly::config(displayModeBar = TRUE, scrollZoom = TRUE)
